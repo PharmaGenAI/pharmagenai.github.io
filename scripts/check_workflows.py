@@ -141,15 +141,16 @@ def workflow_contract_errors(workflows: dict[str, dict]) -> list[str]:
     repository_dispatch = release_sync.get("on", {}).get("repository_dispatch", {})
     if repository_dispatch.get("types") != ["open-pharma-plugins-release"]:
         errors.append("release-sync.yml repository_dispatch type must be open-pharma-plugins-release")
-    if release_sync.get("permissions") != {"contents": "write", "pull-requests": "write"}:
-        errors.append("release-sync.yml must use contents:write and pull-requests:write only")
+    if release_sync.get("permissions") != {"contents": "write"}:
+        errors.append("release-sync.yml GITHUB_TOKEN must use contents:write only")
     sync_commands = job_runs(release_sync)
     for needle in (
         "python scripts/sync_release.py",
         "python scripts/check_content.py",
         "python scripts/check_workflows.py",
         "python scripts/check_local_links.py --site-dir site",
-        "gh pr create",
+        "gh api --method POST",
+        'repos/PharmaGenAI/pharmagenai.github.io/pulls',
     ):
         if needle not in sync_commands:
             errors.append(f"release-sync.yml must run {needle!r}")
@@ -162,6 +163,26 @@ def workflow_contract_errors(workflows: dict[str, dict]) -> list[str]:
         errors.append("release-sync.yml must not expose a release_index_path override")
     if "create-pull-request" in sync_commands:
         errors.append("release-sync.yml must not use a third-party PR action")
+    if "gh pr create" in sync_commands or "gh pr list" in sync_commands:
+        errors.append("release-sync.yml must use direct REST calls rather than gh pr GraphQL helpers")
+    sync_steps = release_sync.get("jobs", {}).get("sync", {}).get("steps", [])
+    pr_step = next(
+        (step for step in sync_steps if "repos/PharmaGenAI/pharmagenai.github.io/pulls" in str(step.get("run", ""))),
+        {},
+    )
+    pr_token = pr_step.get("env", {}).get("GH_TOKEN")
+    if pr_token != "${{ secrets.OPEN_PHARMA_PAGES_PR_TOKEN }}":
+        errors.append("release-sync.yml must use OPEN_PHARMA_PAGES_PR_TOKEN for PR API calls")
+    if pr_token == "${{ github.token }}":
+        errors.append("release-sync.yml must not use GITHUB_TOKEN for PR API calls")
+    pr_commands = str(pr_step.get("run", ""))
+    guard = 'if [ -z "$GH_TOKEN" ]'
+    first_side_effect = min(
+        (pr_commands.index(marker) for marker in ("git push", "gh api --method POST") if marker in pr_commands),
+        default=-1,
+    )
+    if guard not in pr_commands or first_side_effect < 0 or pr_commands.index(guard) > first_side_effect:
+        errors.append("release-sync.yml must fail clearly when OPEN_PHARMA_PAGES_PR_TOKEN is absent")
 
     return errors
 

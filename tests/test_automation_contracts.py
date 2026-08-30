@@ -69,6 +69,36 @@ class AutomationContractsTest(unittest.TestCase):
         errors = workflow_contract_errors(workflows)
         self.assertTrue(any("direct GitHub expression" in error for error in errors))
 
+    def test_workflow_contract_rejects_repository_github_token_for_pr_creation(self) -> None:
+        workflows = load_workflows()
+        sync_steps = workflows["release-sync.yml"]["jobs"]["sync"]["steps"]
+        sync_steps[-1]["env"]["GH_TOKEN"] = "${{ github.token }}"
+
+        errors = workflow_contract_errors(workflows)
+
+        self.assertIn("release-sync.yml must not use GITHUB_TOKEN for PR API calls", errors)
+        self.assertIn("release-sync.yml must use OPEN_PHARMA_PAGES_PR_TOKEN for PR API calls", errors)
+
+    def test_workflow_contract_rejects_gh_pr_graphql_helpers(self) -> None:
+        workflows = load_workflows()
+        sync_steps = workflows["release-sync.yml"]["jobs"]["sync"]["steps"]
+        sync_steps[-1]["run"] += '\ngh pr create --base main --head "$BRANCH_NAME" --title "$PR_TITLE"'
+
+        errors = workflow_contract_errors(workflows)
+
+        self.assertIn("release-sync.yml must use direct REST calls rather than gh pr GraphQL helpers", errors)
+
+    def test_workflow_contract_rejects_pr_token_guard_after_side_effects(self) -> None:
+        workflows = load_workflows()
+        sync_steps = workflows["release-sync.yml"]["jobs"]["sync"]["steps"]
+        pr_step = sync_steps[-1]
+        guard = 'if [ -z "$GH_TOKEN" ]'
+        pr_step["run"] = pr_step["run"].replace(guard, "if false", 1) + f"\n{guard}; then\n  exit 1\nfi\n"
+
+        errors = workflow_contract_errors(workflows)
+
+        self.assertIn("release-sync.yml must fail clearly when OPEN_PHARMA_PAGES_PR_TOKEN is absent", errors)
+
     def test_release_payload_validation_checks_tag_commit_and_index(self) -> None:
         payload = {
             "repository": "PharmaGenAI/open-pharma-plugins",

@@ -41,7 +41,7 @@ The workflow independently validates all of the following before it changes any 
 
 ## Required credentials
 
-Use two distinct, least-privilege machine credentials. Never create one cross-repository token with both canonical-read
+Use three distinct, least-privilege machine credentials. Never create one cross-repository token with both canonical-read
 and site-write access.
 
 1. The canonical repository stores a narrow dispatch-only token that can call the
@@ -50,10 +50,16 @@ and site-write access.
 2. The site repository stores a separate canonical-read-only `OPEN_PHARMA_PAGES_SYNC_TOKEN`. Limit its repository
    selection to `PharmaGenAI/open-pharma-plugins` with `Contents: read`; the release-sync workflow uses it only to
    resolve the upstream tag and read the pinned `plugin-versions.json` through the GitHub API.
+3. The site repository stores `OPEN_PHARMA_PAGES_PR_TOKEN`, a separate fine-grained token scoped only to
+   `PharmaGenAI/pharmagenai.github.io` with `Pull requests: write`. It is used only to find or open the review PR after
+   the synchronized branch has been pushed. The token owner must be an organization member with access to the site
+   repository. The workflow calls GitHub's REST pull-request endpoints directly so the token does not need the extra
+   `Contents: read` permission required by some higher-level CLI helpers.
 
-The site workflow's repository-scoped `GITHUB_TOKEN` handles its own branch push and pull request with
-`contents: write` and `pull-requests: write`. Neither cross-repository credential should be a local interactive `gh`
-token or a broad classic PAT.
+The site workflow's repository-scoped `GITHUB_TOKEN` handles only its synchronized branch push with `contents: write`.
+The organization currently disables PR creation by the Actions `GITHUB_TOKEN`, so PR API calls use the site-only token
+instead of depending on that organization setting. None of these machine credentials should be a local interactive
+`gh` token or a broad classic PAT, and the canonical-read and site-write permissions must never share one token.
 
 ## What the workflow updates
 

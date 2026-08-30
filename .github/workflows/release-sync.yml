@@ -24,7 +24,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: release-sync
@@ -98,12 +97,23 @@ jobs:
       - name: Push branch and open review PR
         if: steps.sync.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPEN_PHARMA_PAGES_PR_TOKEN }}
           BRANCH_NAME: ${{ steps.sync.outputs.branch }}
           PR_TITLE: ${{ steps.sync.outputs.title }}
         run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error title=Open Pharma Pages PR token missing::OPEN_PHARMA_PAGES_PR_TOKEN is required to open the review pull request."
+            exit 1
+          fi
           git push --set-upstream origin "$BRANCH_NAME"
-          existing_pr="$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url')"
+          existing_pr="$(
+            gh api --method GET \
+              repos/PharmaGenAI/pharmagenai.github.io/pulls \
+              -f state=open \
+              -f head="PharmaGenAI:$BRANCH_NAME" \
+              -f base=main \
+              --jq '.[0].html_url // empty'
+          )"
           if [ -n "$existing_pr" ]; then
             echo "$existing_pr"
             exit 0
@@ -121,8 +131,10 @@ jobs:
           - this workflow does not claim that representative samples were regenerated
           - the public Next-Best-Engagement sample remains explicitly responsible for its own generation note
           EOF
-          gh pr create \
-            --base main \
-            --head "$BRANCH_NAME" \
-            --title "$PR_TITLE" \
-            --body-file "$body_file"
+          gh api --method POST \
+            repos/PharmaGenAI/pharmagenai.github.io/pulls \
+            -f base=main \
+            -f head="$BRANCH_NAME" \
+            -f title="$PR_TITLE" \
+            -F body="@$body_file" \
+            --jq '.html_url'
