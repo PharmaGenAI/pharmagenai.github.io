@@ -210,15 +210,17 @@ def sync_site_release(root: Path, release: dict) -> list[str]:
     index_text = index_path.read_text(encoding="utf-8")
     index_text = replace_required(
         index_text,
-        r"Evidence snapshot / [0-9a-f]{7,40}",
-        f"Evidence snapshot / {short_commit}",
-        "homepage source commit",
+        r"<strong>Public beta</strong> · Distribution [0-9]+\.[0-9]+\.[0-9]+ · "
+        r"Pinned source <code>[0-9a-f]{7,40}</code>",
+        f"<strong>Public beta</strong> · Distribution {distribution} · "
+        f"Pinned source <code>{short_commit}</code>",
+        "homepage release line",
     )
     index_text = replace_required(
         index_text,
-        r"<strong>Distribution [^<]+</strong>",
-        f"<strong>Distribution {distribution}</strong>",
-        "homepage distribution version",
+        r'open-pharma-plugins\[hcp-intelligence\]==[0-9]+\.[0-9]+\.[0-9]+',
+        f'open-pharma-plugins[hcp-intelligence]=={distribution}',
+        "homepage quick-install distribution version",
     )
     for capability, label in HOMEPAGE_LABELS.items():
         version = release["capabilities"][capability]

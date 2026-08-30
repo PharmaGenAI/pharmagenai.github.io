@@ -32,7 +32,13 @@ def normalize_source_target(base: Path, target: str) -> Path | None:
     path_text = target.split("#", 1)[0]
     candidate = (base / path_text).resolve()
     if path_text.endswith("/"):
-        return (candidate / "index.md").resolve()
+        directory_index = (candidate / "index.md").resolve()
+        if directory_index.exists():
+            return directory_index
+        # Raw HTML links use MkDocs' clean output URLs. A source page such as
+        # capabilities/hcp-intelligence.md is rendered at
+        # capabilities/hcp-intelligence/, so accept that source equivalent.
+        return candidate.with_suffix(".md")
     return candidate
 
 

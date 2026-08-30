@@ -17,9 +17,13 @@ theme:
   font: false
   features:
     - navigation.instant
+    - navigation.sections
     - navigation.top
     - navigation.tracking
+    - navigation.footer
+    - toc.follow
     - content.code.copy
+    - search.highlight
   palette:
     scheme: open-pharma
     primary: custom

@@ -21,6 +21,7 @@ from scripts.check_content import (
     sample_manifest_errors,
     technical_reference_errors,
 )
+from scripts.check_local_links import normalize_source_target
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,6 +68,17 @@ class FoundationContractsTest(unittest.TestCase):
                 re.DOTALL,
             ),
             "primary hero content must not depend on JavaScript to become visible",
+        )
+
+    def test_clean_output_urls_resolve_to_their_markdown_sources(self) -> None:
+        docs = ROOT / "docs"
+        self.assertEqual(
+            normalize_source_target(docs, "get-started/"),
+            docs / "get-started.md",
+        )
+        self.assertEqual(
+            normalize_source_target(docs, "outcomes/"),
+            docs / "outcomes/index.md",
         )
 
     def test_focus_indicator_has_three_to_one_non_text_contrast(self) -> None:
