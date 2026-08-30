@@ -1,0 +1,50 @@
+{
+  "sample_declaration": "Fictional and representative excerpt; not current runtime-generated output.",
+  "channel_copy": {
+    "channel": "email",
+    "copy": {
+      "subject": {
+        "text": "Fictional evidence for review",
+        "claim_ids": ["fictional-c-001"]
+      },
+      "body": [
+        {
+          "text": "FICTIONAL CLAIM: In the simulated study, the prespecified endpoint was met.",
+          "claim_ids": ["fictional-c-001"]
+        },
+        {
+          "text": "FICTIONAL SAFETY: Consult the simulated prescribing information for the complete safety profile.",
+          "claim_ids": ["fictional-c-002"]
+        }
+      ],
+      "cta": {
+        "text": "Review the fictional evidence",
+        "claim_ids": []
+      }
+    }
+  },
+  "validation_excerpt": {
+    "claims_checked": [
+      {
+        "claim_id": "fictional-c-001",
+        "status": "needs_review",
+        "similarity_score": 1.0,
+        "deviation": null
+      }
+    ],
+    "policy_checks": [
+      {
+        "check_name": "fair_balance",
+        "result": "pass",
+        "detail": "The representative copy contains both fictional efficacy and safety blocks."
+      }
+    ],
+    "overall_pass": false,
+    "input_fingerprint": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "package_status": "draft_for_qualified_mlr_review",
+  "review_flags": [
+    "A validation pass is a software check, not review approval.",
+    "Inspect the final rendered email after any copy or input change."
+  ]
+}

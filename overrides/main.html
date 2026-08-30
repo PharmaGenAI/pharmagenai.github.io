@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Manrope:wght@600;700;800&amp;family=Source+Sans+3:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#102A43">
+  <meta name="application-name" content="Open Pharma Plugins">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Open Pharma Plugins">
+  <meta property="og:title" content="{{ page.meta.title if page and page.meta and page.meta.title else config.site_name }}">
+  <meta property="og:description" content="{{ page.meta.description if page and page.meta and page.meta.description else config.site_description }}">
+  <meta property="og:url" content="{{ page.canonical_url if page else config.site_url }}">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Open Pharma Plugins",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Python 3.10–3.13",
+      "softwareVersion": "{{ config.extra.release.distribution }}",
+      "url": "{{ config.site_url }}",
+      "codeRepository": "{{ config.repo_url }}",
+      "description": {{ config.site_description | tojson }}
+    }
+  </script>
+{% endblock %}
+
+{% block announce %}
+  <strong>Public beta.</strong> Outputs support review; they do not replace qualified human judgement.
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+  {% if config.extra.utility_links %}
+    <section class="opp-utility-footer" aria-label="Utility links">
+      <div class="md-grid">
+        <div class="opp-utility-footer__inner">
+          <strong>Utility links</strong>
+          <nav class="opp-utility-footer__links">
+            {% for link in config.extra.utility_links %}
+              <a href="{{ link.href }}">{{ link.label }}</a>
+            {% endfor %}
+          </nav>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,128 @@
+name: Release Sync
+
+on:
+  repository_dispatch:
+    types:
+      - open-pharma-plugins-release
+  workflow_dispatch:
+    inputs:
+      capability:
+        description: Released capability slug
+        required: true
+      tag:
+        description: Exact upstream release tag
+        required: true
+      commit:
+        description: Exact upstream release commit SHA
+        required: true
+      distribution_version:
+        description: Distribution version from plugin-versions.json
+        required: true
+      plugin_version:
+        description: Capability version from plugin-versions.json
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12"
+
+      - name: Install locked dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.lock
+
+      - name: Validate upstream release and sync duplicated metadata
+        id: sync
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          GITHUB_API_TOKEN: ${{ secrets.OPEN_PHARMA_PAGES_SYNC_TOKEN }}
+          INPUT_CAPABILITY: ${{ inputs.capability }}
+          INPUT_TAG: ${{ inputs.tag }}
+          INPUT_COMMIT: ${{ inputs.commit }}
+          INPUT_DISTRIBUTION_VERSION: ${{ inputs.distribution_version }}
+          INPUT_PLUGIN_VERSION: ${{ inputs.plugin_version }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "repository_dispatch" ]; then
+            python scripts/sync_release.py --event-path "$GITHUB_EVENT_PATH"
+          else
+            python scripts/sync_release.py \
+              --capability "$INPUT_CAPABILITY" \
+              --tag "$INPUT_TAG" \
+              --commit "$INPUT_COMMIT" \
+              --distribution-version "$INPUT_DISTRIBUTION_VERSION" \
+              --plugin-version "$INPUT_PLUGIN_VERSION"
+          fi
+
+      - name: Stop when nothing changed
+        if: steps.sync.outputs.changed != 'true'
+        run: echo "Site release metadata is already current."
+
+      - name: Run validation suite
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          python -m unittest discover -s tests
+          python scripts/check_content.py
+          python scripts/check_workflows.py
+          mkdocs build --strict
+          python scripts/check_local_links.py --site-dir site
+
+      - name: Commit synchronized release metadata
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          BRANCH_NAME: ${{ steps.sync.outputs.branch }}
+          COMMIT_TITLE: ${{ steps.sync.outputs.title }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH_NAME"
+          git add mkdocs.yml docs
+          git commit -m "$COMMIT_TITLE"
+
+      - name: Push branch and open review PR
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH_NAME: ${{ steps.sync.outputs.branch }}
+          PR_TITLE: ${{ steps.sync.outputs.title }}
+        run: |
+          git push --set-upstream origin "$BRANCH_NAME"
+          existing_pr="$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url')"
+          if [ -n "$existing_pr" ]; then
+            echo "$existing_pr"
+            exit 0
+          fi
+          body_file="$(mktemp)"
+          cat > "$body_file" <<'EOF'
+          ## Summary
+
+          - validated the upstream release tag, commit, and release index through the GitHub API
+          - synchronized duplicated release metadata and pinned links in the site repository
+          - reran content, workflow, build, and link validation before opening this pull request
+
+          ## Review notes
+
+          - this workflow does not claim that representative samples were regenerated
+          - the public Next-Best-Engagement sample remains explicitly responsible for its own generation note
+          EOF
+          gh pr create \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --title "$PR_TITLE" \
+            --body-file "$body_file"

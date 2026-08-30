@@ -1,0 +1,50 @@
+{
+  "sample_declaration": "Fictional and representative excerpt; not current runtime-generated output.",
+  "account_id": "FICTIONAL-HCP-001",
+  "status": "review_required",
+  "profile_excerpt": {
+    "full_name": "Dr. Mira Calder (fictional)",
+    "specialty": "Oncology",
+    "country": "United States",
+    "current_title": {
+      "value": "Consultant oncologist, Northstar Cancer Centre (fictional)",
+      "sources": [
+        {
+          "url": "https://northstar-cancer.example/clinicians/mira-calder",
+          "source_type": "web",
+          "title": "Fictional institutional profile",
+          "accessed_date": "2026-08-29"
+        }
+      ],
+      "confidence": "medium"
+    },
+    "research_interests": [
+      {
+        "value": "Supportive care in oncology",
+        "sources": [
+          {
+            "url": "https://research-index.example/fictional/mira-calder",
+            "source_type": "registry",
+            "title": "Fictional research index",
+            "accessed_date": "2026-08-29"
+          }
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "profile_completeness": 0.42,
+    "disambiguation_notes": "Fictional identity. Institution and specialty agree; no real-world identity match was attempted.",
+    "sources_consulted": [
+      {
+        "url": "https://northstar-cancer.example/clinicians/mira-calder",
+        "source_type": "web",
+        "title": "Fictional institutional profile",
+        "accessed_date": "2026-08-29"
+      }
+    ]
+  },
+  "review_flags": [
+    "Confirm identity before adapting this pattern to operational data.",
+    "A single simulated institutional source supports the title; corroboration is absent."
+  ]
+}

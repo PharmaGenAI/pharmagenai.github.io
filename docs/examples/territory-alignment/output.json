@@ -1,0 +1,49 @@
+{
+  "sample_declaration": "Fictional and representative excerpt; not current runtime-generated output.",
+  "scenario_name": "northstar-continuity",
+  "assignments": [
+    {
+      "hcp_id": "FICTIONAL-HCP-TA-001",
+      "hcp_name": "Dr. Rowan Bell (fictional)",
+      "primary_rep": "FICTIONAL-REP-01",
+      "previous_rep": "FICTIONAL-REP-01",
+      "is_changed": false,
+      "change_reason": "Continuity retained",
+      "estimated_travel_min": 18,
+      "estimated_annual_visits": 12,
+      "segment": "high",
+      "tier": 1
+    },
+    {
+      "hcp_id": "FICTIONAL-HCP-TA-002",
+      "hcp_name": "Dr. Samira Holt (fictional)",
+      "primary_rep": "FICTIONAL-REP-01",
+      "previous_rep": "FICTIONAL-REP-01",
+      "is_changed": false,
+      "change_reason": "Account grouping and continuity retained",
+      "estimated_travel_min": 24,
+      "estimated_annual_visits": 6,
+      "segment": "medium",
+      "tier": 2
+    }
+  ],
+  "objectives": {
+    "workload_balance": 0.78,
+    "travel_efficiency": 0.71,
+    "disruption": 1.0,
+    "coverage": 1.0,
+    "composite": 0.86,
+    "raw": {
+      "workload_gini": 0.5,
+      "avg_travel_min": 21,
+      "max_travel_min": 24,
+      "pct_reassigned": 0,
+      "pct_priority_covered": 1.0
+    }
+  },
+  "unassigned": [],
+  "review_flags": [
+    "This tiny excerpt does not test workforce policy or operational route feasibility.",
+    "A manager must review workload concentration on FICTIONAL-REP-01."
+  ]
+}

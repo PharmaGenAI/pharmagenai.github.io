@@ -1,0 +1,42 @@
+sample_declaration: Fictional and representative planning scenario; no real HCP or employee records.
+scenario_name: northstar-continuity
+hcps:
+  - hcp_id: FICTIONAL-HCP-TA-001
+    name: Dr. Rowan Bell (fictional)
+    specialty: oncology
+    segment: high
+    tier: 1
+    account_id: FICTIONAL-ACCOUNT-01
+    consent_visit: true
+    product_requirements:
+      - product_a
+  - hcp_id: FICTIONAL-HCP-TA-002
+    name: Dr. Samira Holt (fictional)
+    specialty: oncology
+    segment: medium
+    tier: 2
+    account_id: FICTIONAL-ACCOUNT-01
+    consent_visit: true
+    product_requirements:
+      - product_a
+reps:
+  - rep_id: FICTIONAL-REP-01
+    name: Jordan Pike (fictional)
+    product_expertise:
+      - product_a
+    max_weekly_hours: 40
+  - rep_id: FICTIONAL-REP-02
+    name: Casey Noor (fictional)
+    product_expertise:
+      - product_a
+    max_weekly_hours: 40
+current_assignments:
+  - hcp_id: FICTIONAL-HCP-TA-001
+    primary_rep: FICTIONAL-REP-01
+  - hcp_id: FICTIONAL-HCP-TA-002
+    primary_rep: FICTIONAL-REP-01
+constraints:
+  - type: account_grouping
+    scope: account:FICTIONAL-ACCOUNT-01
+    value: same_primary_rep
+    description: Keep the fictional account with one primary representative.
