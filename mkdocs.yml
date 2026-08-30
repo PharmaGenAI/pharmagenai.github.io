@@ -5,7 +5,7 @@ site_url: https://pharmagenai.github.io/
 repo_name: Website source
 repo_url: https://github.com/PharmaGenAI/pharmagenai.github.io
 edit_uri: ""
-copyright: Open Pharma Plugins is an Apache-2.0 public beta. Validate outputs before operational use.
+copyright: Open Pharma Plugins is licensed under Apache-2.0. Validate outputs before operational use.
 
 theme:
   name: material

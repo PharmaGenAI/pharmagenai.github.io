@@ -317,11 +317,8 @@ class AutomationContractsTest(unittest.TestCase):
         root = self.make_temp_site_root()
         sync_site_release(root, future_release)
         homepage = (root / "docs/index.md").read_text(encoding="utf-8")
-        self.assertIn(
-            "<strong>Public beta</strong> · Distribution 2.3.0 · "
-            "Pinned source <code>1234567</code>",
-            homepage,
-        )
+        self.assertNotIn("Public beta", homepage)
+        self.assertNotIn("Pinned source", homepage)
         self.assertIn(
             'open-pharma-plugins[hcp-intelligence]==2.3.0',
             homepage,

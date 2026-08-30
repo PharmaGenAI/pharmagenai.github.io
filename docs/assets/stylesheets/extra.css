@@ -81,13 +81,14 @@ input {
 
 .md-typeset code,
 .dossier-kicker,
-.quick-install__label,
-.release-line,
+.quick-install__eyebrow,
+.quick-install__command > p,
 .outcome-id,
 .preview-label,
 .evidence-ribbon__step,
 .version-tag,
 .problem-solution-map span,
+.architecture-overview__eyebrow,
 .docs-index > section > p,
 .reader-path > span {
   font-family: var(--opp-data);
@@ -143,18 +144,6 @@ input {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.md-banner {
-  border-bottom: 1px solid #b8d9d6;
-  background: #e8f3f2;
-  color: var(--opp-ink);
-  font-size: 0.72rem;
-}
-
-.md-banner__inner {
-  margin-top: 0.35rem;
-  margin-bottom: 0.35rem;
-}
-
 .md-main {
   background: var(--opp-paper);
 }
@@ -199,6 +188,7 @@ input {
 .md-header__button:focus-visible,
 .md-nav__link:focus-visible,
 .opp-button:focus-visible,
+.architecture-diagram__link:focus-visible,
 .reader-path:focus-visible {
   outline: 3px solid var(--opp-focus-light);
   outline-offset: 2px;
@@ -207,13 +197,8 @@ input {
 }
 
 .opp-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
-  gap: clamp(2.5rem, 7vw, 6rem);
-  align-items: center;
-  margin: 0 0 3rem;
-  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(2.5rem, 5vw, 4rem);
-  border-bottom: 1px solid var(--opp-line);
+  margin: 0 0 2rem;
+  padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .opp-hero__copy {
@@ -232,9 +217,9 @@ input {
 .opp-hero h1 {
   max-width: none;
   margin: 0;
-  font-size: clamp(2.65rem, 6vw, 4.25rem);
+  font-size: clamp(2.35rem, 4.3vw, 3.45rem);
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.04;
 }
 
 .opp-hero__lede {
@@ -280,30 +265,27 @@ input {
   color: var(--opp-paper) !important;
 }
 
-.release-line {
-  margin: 1.3rem 0 0;
-  color: var(--opp-muted);
-  font-size: 0.62rem;
-  overflow-wrap: anywhere;
-}
-
-.release-line strong {
-  color: var(--opp-teal);
-  font-weight: 600;
-}
-
 .quick-install {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
   min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 1.25rem;
+  margin: 0 0 3.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
   border: 1px solid var(--opp-line);
   border-top: 3px solid var(--opp-teal);
   background: var(--opp-soft);
 }
 
-.quick-install__label {
-  margin: 0 0 0.8rem;
+.quick-install__intro,
+.quick-install__command {
+  min-width: 0;
+}
+
+.quick-install__eyebrow,
+.quick-install__command > p {
+  margin: 0 0 0.55rem;
   color: var(--opp-muted);
   font-size: 0.62rem;
   font-weight: 600;
@@ -311,30 +293,92 @@ input {
   text-transform: uppercase;
 }
 
+.quick-install h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.12rem;
+}
+
 .quick-install pre {
-  margin: 0 -0.25rem 0.85rem;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: clip;
   border-radius: 0.2rem;
   background: #0d263d;
 }
 
 .quick-install pre > code {
+  display: block;
+  max-width: 100%;
   background: #0d263d;
   color: #eef6fb;
   font-size: 0.67rem;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
-.quick-install p:not(.quick-install__label) {
+.quick-install__intro > p:not(.quick-install__eyebrow) {
   margin: 0 0 0.7rem;
   color: var(--opp-muted);
   font-size: 0.74rem;
   line-height: 1.55;
 }
 
-.quick-install > a {
+.quick-install__intro > a {
   font-size: 0.74rem;
   font-weight: 600;
+}
+
+.architecture-overview {
+  margin: 0 0 4rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  border-top: 1px solid var(--opp-line);
+}
+
+.architecture-overview__header {
+  max-width: 46rem;
+  margin-bottom: 1.4rem;
+}
+
+.architecture-overview__eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--opp-teal);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.architecture-overview h2 {
+  margin: 0 0 0.55rem;
+}
+
+.architecture-overview__header > p:last-child {
+  margin: 0;
+  color: var(--opp-muted);
+}
+
+.architecture-diagram {
+  margin: 0;
+}
+
+.architecture-diagram__link {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--opp-line);
+  background: var(--opp-paper);
+}
+
+.architecture-diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.architecture-diagram figcaption {
+  margin-top: 0.65rem;
+  color: var(--opp-muted);
+  font-size: 0.7rem;
 }
 
 .reader-paths {
@@ -823,13 +867,9 @@ input {
 }
 
 @media screen and (max-width: 59.984375em) {
-  .opp-hero {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
   .quick-install {
-    max-width: 32rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .problem-solution-map,
@@ -882,7 +922,7 @@ input {
   }
 
   .opp-hero h1 {
-    font-size: clamp(2.35rem, 12vw, 3rem);
+    font-size: clamp(2.15rem, 10vw, 2.75rem);
   }
 
   .reader-paths__grid,
@@ -890,6 +930,10 @@ input {
   .capability-header,
   .capability-workflow {
     grid-template-columns: 1fr;
+  }
+
+  .architecture-overview {
+    margin-bottom: 3rem;
   }
 
   .reader-path {

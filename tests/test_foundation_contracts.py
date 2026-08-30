@@ -90,6 +90,33 @@ class FoundationContractsTest(unittest.TestCase):
                 self.assertGreaterEqual(contrast_ratio(focus, background), 3.0)
         self.assertIn("box-shadow: 0 0 0 5px var(--opp-focus)", self.css)
 
+    def test_homepage_keeps_beta_and_release_details_out_of_global_chrome(self) -> None:
+        override = (ROOT / "overrides/main.html").read_text(encoding="utf-8")
+        self.assertNotIn("{% block announce %}", override)
+        self.assertNotIn("public beta", self.config["copyright"].lower())
+        self.assertNotIn("release-line", self.homepage)
+        self.assertNotIn("Pinned source", self.homepage)
+
+    def test_homepage_installation_is_a_separate_wrapping_section(self) -> None:
+        hero_end = self.homepage.index("</section>")
+        install_start = self.homepage.index('<section class="quick-install"')
+        self.assertGreater(install_start, hero_end)
+        self.assertIn("white-space: pre-wrap;", self.css)
+        self.assertIn("overflow-wrap: anywhere;", self.css)
+        self.assertIn("word-break: break-word;", self.css)
+
+    def test_homepage_includes_a_responsive_architecture_diagram(self) -> None:
+        diagram = ROOT / "docs/assets/images/architecture.svg"
+        self.assertTrue(diagram.is_file())
+        self.assertIn(
+            '<img src="assets/images/architecture.svg" alt="Architecture diagram',
+            self.homepage,
+        )
+        self.assertIn('href="assets/images/architecture.svg"', self.homepage)
+        self.assertIn(".architecture-diagram img", self.css)
+        self.assertIn("width: 100%;", self.css)
+        self.assertIn("height: auto;", self.css)
+
     def test_regression_check_rejects_previous_navigation_pattern(self) -> None:
         previous_javascript = 'document.addEventListener("DOMContentSwitch", revealHero);'
         previous_css = """

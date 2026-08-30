@@ -14,15 +14,21 @@ hide:
       <a class="opp-button opp-button--primary" href="get-started/">Get started</a>
       <a class="opp-button" href="#plugin-guides">Browse plugin guides</a>
     </div>
-    <p class="release-line"><strong>Public beta</strong> · Distribution 2.2.1 · Pinned source <code>6bfc6ce</code></p>
   </div>
-  <aside class="quick-install" aria-labelledby="quick-install-title">
-    <p class="quick-install__label" id="quick-install-title">Quick install · public MCP server</p>
+</section>
+
+<section class="quick-install" aria-labelledby="quick-install-title">
+  <div class="quick-install__intro">
+    <p class="quick-install__eyebrow">Installation</p>
+    <h2 id="quick-install-title">Install a released capability</h2>
+    <p>Start with one capability from the public package. The full Skill + MCP installer requires an authorized repository checkout.</p>
+    <a href="get-started/#pick-the-install-surface">See all installation options →</a>
+  </div>
+  <div class="quick-install__command">
+    <p>Python package</p>
     <pre><code>python -m pip install \
   "open-pharma-plugins[hcp-intelligence]==2.2.1"</code></pre>
-    <p>Start with one released capability. The full Skill + MCP installer requires an authorized repository checkout.</p>
-    <a href="get-started/#pick-the-install-surface">See all installation options →</a>
-  </aside>
+  </div>
 </section>
 
 <section class="reader-paths" aria-labelledby="reader-paths-title">
@@ -62,6 +68,20 @@ hide:
     <p>Teams receive a cited profile, evidence brief, scenario, engagement plan, learning draft, or campaign review package that a qualified person can examine.</p>
   </section>
 </div>
+
+<section class="architecture-overview" aria-labelledby="architecture-overview-title">
+  <div class="architecture-overview__header">
+    <p class="architecture-overview__eyebrow">Portfolio architecture</p>
+    <h2 id="architecture-overview-title">How the portfolio fits together</h2>
+    <p>Each capability stays independently installable, so teams can choose the workflow they need and bring its Skill and MCP tools into a supported agent environment.</p>
+  </div>
+  <figure class="architecture-diagram">
+    <a class="architecture-diagram__link" href="assets/images/architecture.svg" aria-label="Open the Open Pharma Plugins architecture diagram at full size">
+      <img src="assets/images/architecture.svg" alt="Architecture diagram showing six pharmaceutical commercial capabilities packaged as independent Open Pharma Plugins with a Skill and MCP server, then installed into agent environments." loading="lazy">
+    </a>
+    <figcaption>Six focused capabilities, packaged one plugin at a time. <a href="assets/images/architecture.svg">Open the full-size diagram →</a></figcaption>
+  </figure>
+</section>
 
 ## Plugin guides { #plugin-guides }
 
