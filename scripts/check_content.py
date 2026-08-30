@@ -139,10 +139,7 @@ REQUIRED_TOKENS = {
 
 SEMVER_PATTERN = re.compile(r"^\d+\.\d+\.\d+$")
 COMMIT_PATTERN = re.compile(r"^[0-9a-f]{7,40}$")
-PRIVATE_CANONICAL_URL_PATTERN = re.compile(
-    rf"https://github\.com/{re.escape(CANONICAL_REPOSITORY)}(?:/[^\s)\"'<>]*)?"
-)
-PRIVATE_RAW_INSTALL_PATTERN = re.compile(
+RAW_INSTALL_PATTERN = re.compile(
     r"https://raw\.githubusercontent\.com/PharmaGenAI/open-pharma-plugins/"
 )
 CURRENT_NBE_NOTE_PATTERN = re.compile(
@@ -173,30 +170,6 @@ def frontmatter(path: Path, errors: list[str]) -> str:
         if key not in header:
             fail(errors, f"{path.relative_to(ROOT)}: missing {key[:-1]} metadata")
     return text
-
-
-def private_canonical_access_errors(relative: str, text: str) -> list[str]:
-    errors: list[str] = []
-    private_links = PRIVATE_CANONICAL_URL_PATTERN.findall(text)
-    label = "Authorized repository access required"
-    if not private_links:
-        return errors
-    label_count = text.count(label)
-    if relative == "docs/technical-reference.md":
-        if label_count < 2:
-            errors.append(
-                "docs/technical-reference.md: private canonical link groups must be labeled 'Authorized repository access required'"
-            )
-        lines = text.splitlines()
-        for line in lines:
-            if PRIVATE_CANONICAL_URL_PATTERN.search(line) and label not in line:
-                errors.append(
-                    "docs/technical-reference.md: each private canonical table row must include the exact access label"
-                )
-                break
-    elif label_count < 1:
-        errors.append(f"{relative}: private canonical links require the exact access label")
-    return errors
 
 
 def release_metadata_errors(release: dict) -> list[str]:
@@ -326,6 +299,7 @@ def technical_reference_errors(technical: str, release: dict) -> list[str]:
     errors: list[str] = []
     technical_links = link_targets(technical)
     for target in (
+        f"https://github.com/{CANONICAL_REPOSITORY}",
         f"https://github.com/{CANONICAL_REPOSITORY}/blob/{release['source_commit']}/README.md",
         f"https://github.com/{CANONICAL_REPOSITORY}/blob/{release['source_commit']}/docs/en/installation.md",
         f"https://github.com/{CANONICAL_REPOSITORY}/blob/{release['source_commit']}/docs/en/configuration.md",
@@ -342,33 +316,34 @@ def technical_reference_errors(technical: str, release: dict) -> list[str]:
 
     technical_lower = technical.lower()
     for required in (
-        "authorized repository access required",
-        "public paths available today",
+        "installation and repository paths",
+        "pinned repository documents",
+        "pinned capability cookbooks",
         expected_public_pypi_url(release).removeprefix("https://"),
         f"visible short sha `{release['source_commit'][:7]}` is derived",
     ):
         if required not in technical_lower:
             errors.append(
-                f"docs/technical-reference.md: missing honest access/fallback text {required!r}"
+                f"docs/technical-reference.md: missing repository/install text {required!r}"
             )
 
     for forbidden in (
-        "no repo access required",
-        "publicly available github guide",
-        "anonymous github access",
+        "authorized repository access required",
+        "private canonical repository",
+        "authenticate to github",
     ):
         if forbidden in technical_lower:
             errors.append(
-                f"docs/technical-reference.md: forbidden anonymous-access wording {forbidden!r}"
+                f"docs/technical-reference.md: forbidden private-access wording {forbidden!r}"
             )
 
     for required_block in (
-        "\n\n| Need | Pinned canonical document | Access |\n| --- | --- | --- |",
-        "\n\n| Capability | Pinned cookbook | Access |\n| --- | --- | --- |",
+        "\n\n| Need | Pinned canonical document |\n| --- | --- |",
+        "\n\n| Capability | Pinned cookbook |\n| --- | --- |",
     ):
         if required_block not in technical:
             errors.append(
-                "docs/technical-reference.md: private canonical access tables must stay in Markdown table blocks"
+                "docs/technical-reference.md: pinned repository tables must stay in Markdown table blocks"
             )
     return errors
 
@@ -839,10 +814,12 @@ def main() -> int:
     expected_pip_command = f'python -m pip install "open-pharma-plugins[hcp-intelligence]=={release["distribution_version"]}"'
     for required in (
         expected_pip_command,
-        "public pypi distribution",
-        "authorized repository checkout required",
+        "option 1 · agent harness",
+        "option 2 · python distribution",
+        "claude code or codex",
+        "published python distribution",
+        f"https://github.com/{CANONICAL_REPOSITORY}",
         "bash install.sh",
-        "bash install.sh local",
         "~/.open-pharma-plugins/config",
         "fictional",
         "platform owner",
@@ -857,7 +834,7 @@ def main() -> int:
         "anonymous",
     ):
         if forbidden in get_started.lower():
-            fail(errors, f"docs/get-started.md: forbidden anonymous/private install claim {forbidden!r}")
+            fail(errors, f"docs/get-started.md: forbidden raw-installer shortcut {forbidden!r}")
 
     trust = pages["docs/trust-governance.md"].lower()
     for required in (
@@ -909,15 +886,16 @@ def main() -> int:
             fail(errors, f"site copy must state the {statement!r} boundary")
     for assurance in find_prohibited_assurances(combined):
         fail(errors, f"site copy contains prohibited assurance: {assurance}")
-    if PRIVATE_RAW_INSTALL_PATTERN.search(combined):
-        fail(errors, "site copy must not claim anonymous raw installer access for the private canonical repository")
-
-    for relative, text in pages.items():
-        for error in private_canonical_access_errors(relative, text):
-            fail(errors, error)
-    for slug, text in capability_pages.items():
-        for error in private_canonical_access_errors(f"docs/capabilities/{slug}.md", text):
-            fail(errors, error)
+    if RAW_INSTALL_PATTERN.search(combined):
+        fail(errors, "site copy must direct users to inspect install.sh in the repository, not a raw installer shortcut")
+    for forbidden in (
+        "authorized repository access required",
+        "authorized repository checkout required",
+        "private canonical repository",
+        "the repository is private",
+    ):
+        if forbidden in lower_combined:
+            fail(errors, f"site copy must assume public repository access; found {forbidden!r}")
 
     for error in release_metadata_errors(release):
         fail(errors, error)
@@ -952,7 +930,7 @@ def main() -> int:
     if PUBLIC_SITE_REPOSITORY_URL not in source_partial or "Website source" not in source_partial:
         fail(errors, "source override must identify the public website source repository")
     if f"https://github.com/{CANONICAL_REPOSITORY}" in source_partial:
-        fail(errors, "source override must not expose the private canonical repository as a global link")
+        fail(errors, "source override must continue to identify the website source, not the plugin repository")
 
     favicon_header = (DOCS / "favicon.ico").read_bytes()[:4]
     if favicon_header != b"\x00\x00\x01\x00":

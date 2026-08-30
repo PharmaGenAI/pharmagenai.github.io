@@ -115,4 +115,3 @@ Inspect the fictional source-to-message trace, then use the canonical pinned gui
 schemas, path-first prompts, and renderer behavior.
 
 [Open the pinned Field Training guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/field-training/usage.md){ .opp-button .opp-button--primary }
-Authorized repository access required.

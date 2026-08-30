@@ -116,4 +116,3 @@ Use the fictional run to practise interpreting coverage before findings, then co
 provider setup and immutable artifact behavior.
 
 [Open the pinned Competitive Intelligence guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/competitive-intelligence/usage.md){ .opp-button .opp-button--primary }
-Authorized repository access required.

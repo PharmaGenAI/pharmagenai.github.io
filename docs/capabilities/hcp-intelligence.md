@@ -116,4 +116,3 @@ Inspect the small fictional files first, then use the canonical pinned guide for
 and batch completion rules.
 
 [Open the pinned HCP Intelligence guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/hcp-intelligence/usage.md){ .opp-button .opp-button--primary }
-Authorized repository access required.

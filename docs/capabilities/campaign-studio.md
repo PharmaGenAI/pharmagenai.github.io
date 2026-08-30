@@ -116,4 +116,3 @@ Inspect the fictional claim-to-copy mapping, then use the canonical pinned guide
 brand-kit inputs, renderer sequence, and review-package behavior.
 
 [Open the pinned Campaign Studio guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/campaign-studio/usage.md){ .opp-button .opp-button--primary }
-Authorized repository access required.

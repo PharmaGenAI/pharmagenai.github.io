@@ -20,18 +20,28 @@ hide:
 <section class="quick-install" aria-labelledby="quick-install-title">
   <div class="quick-install__intro">
     <p class="quick-install__eyebrow">Installation</p>
-    <h2 id="quick-install-title">Install in Claude or Codex</h2>
-    <p>The preferred path uses the repository installer to add a selected Skill + MCP plugin through the agent harness. Inspect <code>install.sh</code>, then run it and choose Claude or Codex.</p>
-    <p class="quick-install__access">Authorized repository access required</p>
-    <a href="https://github.com/PharmaGenAI/open-pharma-plugins">Open the installer repository →</a><br>
+    <h2 id="quick-install-title">Choose an installation path</h2>
+    <p>Install the complete plugin in an agent harness, or use the published Python distribution for a Python-managed MCP server.</p>
+    <a href="https://github.com/PharmaGenAI/open-pharma-plugins">Open the plugin repository →</a><br>
     <a href="get-started/#pick-the-install-surface">Read the installation guidance →</a>
   </div>
-  <div class="quick-install__command">
-    <p>Preferred · agent harness</p>
-    <pre><code>git clone https://github.com/PharmaGenAI/open-pharma-plugins.git
+  <div class="quick-install__options">
+    <article class="quick-install__option">
+      <p>Option 1 · Agent harness</p>
+      <h3>Claude Code or Codex</h3>
+      <span>Run the repository installer to add the Skill and MCP tools through the harness.</span>
+      <pre><code>git clone https://github.com/PharmaGenAI/open-pharma-plugins.git
 cd open-pharma-plugins
 less install.sh
 bash install.sh</code></pre>
+    </article>
+    <article class="quick-install__option quick-install__option--python">
+      <p>Option 2 · Python distribution</p>
+      <h3>Published package</h3>
+      <span>Install a released capability from the published Python distribution.</span>
+      <pre><code>python -m pip install \
+  "open-pharma-plugins[hcp-intelligence]==2.2.1"</code></pre>
+    </article>
   </div>
 </section>
 
@@ -127,7 +137,7 @@ bash install.sh</code></pre>
     <p>Try</p>
     <h3>Installation and examples</h3>
     <ul>
-      <li><a href="get-started/">Get started</a> — public and authorized install paths</li>
+      <li><a href="get-started/">Get started</a> — agent harness and Python distribution paths</li>
       <li><a href="examples/">Fictional examples</a> — input, output, and manifest for every plugin</li>
       <li><a href="assets/data/release.json">Release snapshot</a> — machine-readable version provenance</li>
     </ul>
@@ -151,7 +161,7 @@ bash install.sh</code></pre>
 ## Technical truth stays with the release
 
 This site explains business use and provides fictional examples. Package versions, installation commands,
-release notes, schemas, and technical behavior remain canonical in the authorized repository path linked from the
+release notes, schemas, and technical behavior remain canonical in the repository path linked from the
 [technical reference page](technical-reference.md). The machine-readable [release snapshot](assets/data/release.json)
 records the full pinned source commit `6bfc6ce43491d66b4ef45b1d3934a58648e1afc6`; the visible short SHA `6bfc6ce`
 is derived from that full commit for display only.

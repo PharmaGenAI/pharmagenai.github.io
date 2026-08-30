@@ -208,6 +208,12 @@ def sync_site_release(root: Path, release: dict) -> list[str]:
 
     index_path = root / "docs/index.md"
     index_text = index_path.read_text(encoding="utf-8")
+    index_text = replace_required(
+        index_text,
+        r'open-pharma-plugins\[hcp-intelligence\]==[0-9]+\.[0-9]+\.[0-9]+',
+        f'open-pharma-plugins[hcp-intelligence]=={distribution}',
+        "homepage Python distribution version",
+    )
     for capability, label in HOMEPAGE_LABELS.items():
         version = release["capabilities"][capability]
         index_text = replace_required(

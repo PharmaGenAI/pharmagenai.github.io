@@ -320,8 +320,11 @@ class AutomationContractsTest(unittest.TestCase):
         self.assertNotIn("Public beta", homepage)
         self.assertNotIn("Pinned source", homepage)
         self.assertIn("bash install.sh", homepage)
-        self.assertIn("Claude or Codex", homepage)
-        self.assertNotIn("open-pharma-plugins[hcp-intelligence]", homepage)
+        self.assertIn("Claude Code or Codex", homepage)
+        self.assertIn(
+            'open-pharma-plugins[hcp-intelligence]==2.3.0',
+            homepage,
+        )
         result = subprocess.run(
             [sys.executable, "scripts/check_content.py"],
             cwd=root,

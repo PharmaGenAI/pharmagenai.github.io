@@ -114,4 +114,3 @@ Inspect how the fictional scenario exposes continuity and concentration, then us
 the separate CSV contracts and scenario tools.
 
 [Open the pinned Territory Alignment guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/territory-alignment/usage.md){ .opp-button .opp-button--primary }
-Authorized repository access required.

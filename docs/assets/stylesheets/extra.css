@@ -82,8 +82,8 @@ input {
 .md-typeset code,
 .dossier-kicker,
 .quick-install__eyebrow,
-.quick-install__command > p,
-.preferred-install__label,
+.quick-install__option > p,
+.install-option__label,
 .outcome-id,
 .preview-label,
 .capability-table__index,
@@ -270,7 +270,7 @@ input {
 
 .quick-install {
   display: grid;
-  grid-template-columns: minmax(14rem, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr);
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
   min-width: 0;
@@ -282,12 +282,13 @@ input {
 }
 
 .quick-install__intro,
-.quick-install__command {
+.quick-install__options,
+.quick-install__option {
   min-width: 0;
 }
 
 .quick-install__eyebrow,
-.quick-install__command > p {
+.quick-install__option > p {
   margin: 0 0 0.55rem;
   color: var(--opp-muted);
   font-size: 0.62rem;
@@ -301,9 +302,37 @@ input {
   font-size: 1.12rem;
 }
 
+.quick-install__options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quick-install__option {
+  padding: 1rem;
+  border: 1px solid var(--opp-line);
+  border-left: 3px solid var(--opp-teal);
+  background: var(--opp-paper);
+}
+
+.quick-install__option--python {
+  border-left-color: var(--opp-blue);
+}
+
+.quick-install__option h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.92rem;
+}
+
+.quick-install__option > span {
+  display: block;
+  color: var(--opp-muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
 .quick-install pre {
   max-width: 100%;
-  margin: 0;
+  margin: 0.65rem 0 0;
   overflow-x: clip;
   border-radius: 0.2rem;
   background: #0d263d;
@@ -332,25 +361,26 @@ input {
   font-weight: 600;
 }
 
-.quick-install__intro > .quick-install__access {
-  margin-bottom: 0.35rem;
-  color: var(--opp-amber);
-  font-family: var(--opp-data);
-  font-size: 0.59rem;
-  font-weight: 600;
-  letter-spacing: 0.035em;
-  text-transform: uppercase;
+.install-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.75rem;
 }
 
-.preferred-install {
-  margin: 1.25rem 0 1.75rem;
+.install-option {
+  min-width: 0;
   padding: 1.25rem 1.35rem;
   border: 1px solid var(--opp-line);
   border-top: 3px solid var(--opp-teal);
   background: var(--opp-soft);
 }
 
-.preferred-install__label {
+.install-option--python {
+  border-top-color: var(--opp-blue);
+}
+
+.install-option__label {
   margin-bottom: 0.7rem;
   color: var(--opp-teal);
   font-size: 0.61rem;
@@ -359,17 +389,25 @@ input {
   text-transform: uppercase;
 }
 
-.preferred-install ol {
+.install-option--python .install-option__label {
+  color: var(--opp-blue);
+}
+
+.install-option h3 {
   margin-top: 0;
 }
 
-.preferred-install pre {
+.install-option ol {
+  margin-top: 0;
+}
+
+.install-option pre {
   max-width: 100%;
   margin-bottom: 0.75rem;
   overflow-x: clip;
 }
 
-.preferred-install pre > code {
+.install-option pre > code {
   display: block;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -377,7 +415,7 @@ input {
   word-break: break-word;
 }
 
-.preferred-install > :last-child {
+.install-option > :last-child {
   margin-bottom: 0;
 }
 
@@ -1065,6 +1103,7 @@ input {
   }
 
   .reader-paths__grid,
+  .install-options,
   .capability-header,
   .capability-workflow {
     grid-template-columns: 1fr;

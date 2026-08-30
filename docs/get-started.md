@@ -55,17 +55,21 @@ data, provider keys, and review checkpoints only after the team agrees the outpu
 
 ## Pick the install surface
 
-The preferred installation path uses the canonical repository's guided installer. It adds the selected plugin
-through the native marketplace for **Claude or Codex**, so the Skill and MCP tools arrive together and share one
-configuration. The repository is private; authenticate to GitHub before opening
-[PharmaGenAI/open-pharma-plugins](https://github.com/PharmaGenAI/open-pharma-plugins).
+Open Pharma Plugins supports two installation options. Choose the agent-harness path for the complete plugin
+experience, or use the published Python distribution for a Python-managed MCP server.
 
-<div class="preferred-install" markdown="1">
-  <div class="preferred-install__label">Preferred · Claude or Codex</div>
+<div class="install-options" markdown="1">
+  <section class="install-option" markdown="1">
+  <div class="install-option__label">Option 1 · Agent harness</div>
+
+### Install in Claude Code or Codex
+
+Use this option when the plugin should run inside Claude Code or Codex. The repository installer adds the Skill
+and MCP tools through the harness's native plugin system.
 
 1. Clone the repository and enter its directory.
 2. Inspect `install.sh` before execution.
-3. Run `bash install.sh`, choose Claude or Codex, then select the capability to install.
+3. Run `bash install.sh`, choose Claude Code or Codex, then select the capability.
 4. Follow the installer verification step before using governed inputs.
 
 ```bash
@@ -75,38 +79,32 @@ less install.sh
 bash install.sh
 ```
 
-Authorized repository access required.
-</div>
+  [Open the Open Pharma Plugins repository →](https://github.com/PharmaGenAI/open-pharma-plugins)
+  </section>
 
-| What you can do today | Install surface | Exact path |
-| --- | --- | --- |
-| Install the complete plugin in an agent harness | **Preferred: Claude or Codex native plugin install** | Authenticate to GitHub, clone `PharmaGenAI/open-pharma-plugins`, inspect `install.sh`, and run `bash install.sh` |
-| Install one released MCP server without the Skill | Public PyPI distribution fallback | `python -m pip install "open-pharma-plugins[hcp-intelligence]==2.2.1"` |
-| Inspect a fictional first demo without credentials or operational files | This public site | Open the capability guide, sample input, sample output, and manifest from [Examples](examples/index.md) |
-| Run unpublished local code from a branch or working tree | Authorized repository checkout required | Authenticate to GitHub first, then clone `PharmaGenAI/open-pharma-plugins`, switch to the intended branch, and run `bash install.sh local` |
+  <section class="install-option install-option--python" markdown="1">
+  <div class="install-option__label">Option 2 · Python distribution</div>
 
-Use the PyPI command only when an MCP-server-only installation is intentional. After that fallback path, confirm the
-capability entry point is available:
+### Install the published package
+
+Use this option when you want the published Python distribution or need to manage the MCP server from a Python
+environment. This example installs HCP Intelligence.
+
+```bash
+python -m pip install "open-pharma-plugins[hcp-intelligence]==2.2.1"
+```
+
+Confirm the installed entry point:
 
 ```bash
 open-pharma-plugins-hcp-intelligence --version
 open-pharma-plugins-hcp-intelligence --check-system
 ```
+  </section>
+</div>
 
-Python 3.10 to 3.13 is supported. The guided installer requires `uv` and `uvx`; install them separately from
-the official `uv` instructions before running `bash install.sh` in an authorized local checkout.
-
-### What a public visitor can complete today
-
-- Install the released MCP-server-only fallback from public PyPI.
-- Inspect every fictional example, review boundary, and pinned release snapshot on this site.
-- Decide whether the output shape is useful before any platform owner requests repository access, keys, or governed data.
-
-### What requires authorized repository access
-
-- The preferred guided Skill + MCP installer because `install.sh`, cookbooks, and pinned repository manifests live in the private canonical repository.
-- Local-checkout workflows such as `bash install.sh local` because they operate on a checked-out repository tree.
-- Canonical cookbook details beyond the public summary on this site.
+Python 3.10 to 3.13 is supported. Option 1 requires `uv` and `uvx`; install them from the official `uv`
+instructions before running `bash install.sh`. Keep keys in `~/.open-pharma-plugins/config`, not in prompts.
 
 ## Review a fictional first output before using governed data
 

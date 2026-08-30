@@ -16,7 +16,6 @@ from scripts.check_content import (
     link_targets,
     nbe_public_sample_errors,
     navigation_lifecycle_errors,
-    private_canonical_access_errors,
     release_metadata_errors,
     sample_manifest_errors,
     technical_reference_errors,
@@ -111,16 +110,19 @@ class FoundationContractsTest(unittest.TestCase):
         self.assertIn('<th scope="col">Expected output</th>', self.homepage)
         self.assertNotIn("evidence-ribbon", self.homepage)
 
-    def test_preferred_install_is_the_native_agent_harness(self) -> None:
+    def test_installation_presents_agent_and_python_options(self) -> None:
         get_started = (ROOT / "docs/get-started.md").read_text(encoding="utf-8")
         for marker in (
-            "Preferred · Claude or Codex",
+            "Option 1 · Agent harness",
+            "Option 2 · Python distribution",
+            "Claude Code or Codex",
             "https://github.com/PharmaGenAI/open-pharma-plugins",
             "less install.sh",
             "bash install.sh",
+            'python -m pip install "open-pharma-plugins[hcp-intelligence]==2.2.1"',
         ):
             self.assertIn(marker, get_started)
-        self.assertIn("MCP-server-only installation", get_started)
+        self.assertIn("published Python distribution", get_started)
 
     def test_every_capability_visualizes_input_tools_and_expected_output(self) -> None:
         for slug in CAPABILITY_SLUGS:
@@ -396,59 +398,28 @@ class FoundationContractsTest(unittest.TestCase):
             errors,
         )
 
-    def test_private_canonical_links_require_exact_access_label(self) -> None:
-        text = (
-            "[Guide](https://github.com/PharmaGenAI/open-pharma-plugins/blob/"
-            "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/docs/en/installation.md)"
-        )
-        errors = private_canonical_access_errors("docs/get-started.md", text)
-        self.assertIn(
-            "docs/get-started.md: private canonical links require the exact access label",
-            errors,
-        )
+    def test_site_assumes_public_canonical_repository(self) -> None:
+        paths = [
+            ROOT / "docs/index.md",
+            ROOT / "docs/get-started.md",
+            ROOT / "docs/technical-reference.md",
+            *(ROOT / "docs/capabilities" / f"{slug}.md" for slug in CAPABILITY_SLUGS),
+        ]
+        combined = "\n".join(path.read_text(encoding="utf-8") for path in paths)
+        self.assertIn("https://github.com/PharmaGenAI/open-pharma-plugins", combined)
+        for forbidden in (
+            "Authorized repository access required",
+            "Authorized repository checkout required",
+            "private canonical repository",
+            "The repository is private",
+        ):
+            self.assertNotIn(forbidden, combined)
 
-    def test_private_canonical_root_link_requires_exact_access_label(self) -> None:
-        text = "[Repository](https://github.com/PharmaGenAI/open-pharma-plugins)"
-        errors = private_canonical_access_errors("docs/get-started.md", text)
-        self.assertIn(
-            "docs/get-started.md: private canonical links require the exact access label",
-            errors,
-        )
-
-    def test_technical_reference_private_rows_must_include_access_label(self) -> None:
-        text = (
-            "## Authorized repository access required\n"
-            "| Need | Link | Access |\n"
-            "| --- | --- | --- |\n"
-            "| Install | [docs](https://github.com/PharmaGenAI/open-pharma-plugins/blob/"
-            "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/docs/en/installation.md) | missing |\n"
-        )
-        errors = private_canonical_access_errors("docs/technical-reference.md", text)
-        self.assertIn(
-            "docs/technical-reference.md: each private canonical table row must include the exact access label",
-            errors,
-        )
-
-    def test_technical_reference_private_tables_require_markdown_table_blocks(self) -> None:
-        text = (
-            "## Authorized repository access required\n"
-            "Private canonical links live below.\n"
-            "| Need | Link | Access |\n"
-            "| --- | --- | --- |\n"
-            "| Install | [docs](https://github.com/PharmaGenAI/open-pharma-plugins/blob/"
-            "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/docs/en/installation.md) | "
-            "Authorized repository access required |\n"
-            "## Authorized repository access required\n"
-            "Cookbooks live below.\n"
-            "| Capability | Pinned cookbook | Access |\n"
-            "| --- | --- | --- |\n"
-            "| HCP Intelligence | [cookbooks](https://github.com/PharmaGenAI/open-pharma-plugins/blob/"
-            "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/hcp-intelligence/usage.md) | "
-            "Authorized repository access required |\n"
-        )
+    def test_technical_reference_pinned_tables_require_markdown_blocks(self) -> None:
+        text = "## Pinned repository documents\nLinks without the required tables.\n"
         errors = technical_reference_errors(text, self.release)
         self.assertIn(
-            "docs/technical-reference.md: private canonical access tables must stay in Markdown table blocks",
+            "docs/technical-reference.md: pinned repository tables must stay in Markdown table blocks",
             errors,
         )
 

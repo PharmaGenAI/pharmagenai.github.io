@@ -115,4 +115,3 @@ Use the pinned 80-row fictional demo universe to inspect the consent and no-acti
 pinned guide for the full CSV contract, plan fingerprint, and export behavior.
 
 [Open the pinned Next-Best-Engagement guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/next-best-engagement/usage.md){ .opp-button .opp-button--primary }
-Authorized repository access required.
