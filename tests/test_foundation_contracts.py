@@ -105,6 +105,33 @@ class FoundationContractsTest(unittest.TestCase):
         self.assertIn("overflow-wrap: anywhere;", self.css)
         self.assertIn("word-break: break-word;", self.css)
 
+    def test_homepage_uses_an_aligned_capability_table(self) -> None:
+        self.assertIn('<table class="capability-table">', self.homepage)
+        self.assertIn('<th scope="col">Business question</th>', self.homepage)
+        self.assertIn('<th scope="col">Expected output</th>', self.homepage)
+        self.assertNotIn("evidence-ribbon", self.homepage)
+
+    def test_preferred_install_is_the_native_agent_harness(self) -> None:
+        get_started = (ROOT / "docs/get-started.md").read_text(encoding="utf-8")
+        for marker in (
+            "Preferred · Claude or Codex",
+            "https://github.com/PharmaGenAI/open-pharma-plugins",
+            "less install.sh",
+            "bash install.sh",
+        ):
+            self.assertIn(marker, get_started)
+        self.assertIn("MCP-server-only installation", get_started)
+
+    def test_every_capability_visualizes_input_tools_and_expected_output(self) -> None:
+        for slug in CAPABILITY_SLUGS:
+            page = (ROOT / "docs/capabilities" / f"{slug}.md").read_text(encoding="utf-8")
+            with self.subTest(slug=slug):
+                self.assertEqual(page.count('class="plugin-flow"'), 1)
+                self.assertIn(">Input<", page)
+                self.assertIn(">Tools<", page)
+                self.assertIn(">Expected output<", page)
+                self.assertIn('class="plugin-flow__tools"', page)
+
     def test_homepage_includes_a_responsive_architecture_diagram(self) -> None:
         diagram = ROOT / "docs/assets/images/architecture.svg"
         self.assertTrue(diagram.is_file())

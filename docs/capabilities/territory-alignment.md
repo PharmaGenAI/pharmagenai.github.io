@@ -32,6 +32,31 @@ and manager overrides inspectable before a field operating decision is made.
 - Models vacancies, new hires, pinned overrides, objective weights, and product/account constraints.
 - Compares two to four scenarios and can produce map or visit-cluster artifacts for operational review.
 
+## How the plugin works
+
+<section class="plugin-flow" aria-label="Territory Alignment input, tools, and expected output">
+  <div class="plugin-flow__stage plugin-flow__stage--input">
+    <span class="plugin-flow__label">Input</span>
+    <h3>Four governed datasets</h3>
+    <p>HCPs, representatives, current alignment, and constraints CSVs plus named scenario settings and overrides.</p>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--tools">
+    <span class="plugin-flow__label">Tools</span>
+    <h3>Model, compare, and map</h3>
+    <ul class="plugin-flow__tools" aria-label="Territory Alignment tools">
+      <li><code>ta_status</code></li><li><code>ta_align</code></li><li><code>ta_evaluate</code></li>
+      <li><code>ta_compare</code></li><li><code>ta_visualize</code></li><li><code>ta_cluster</code></li>
+    </ul>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--output">
+    <span class="plugin-flow__label">Expected output</span>
+    <h3>Comparable operating scenarios</h3>
+    <p>Scenario JSON and CSVs, comparison metrics, an interactive map, and representative visit routes.</p>
+  </div>
+</section>
+
 ## A three-step workflow
 
 <div class="capability-workflow">

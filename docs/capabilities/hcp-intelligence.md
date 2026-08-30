@@ -32,6 +32,33 @@ disambiguation notes. The objective is better-prepared human research and accoun
 - Keeps account identity, evidence-backed claims, source coverage, confidence, and profile completeness together.
 - Supports CSV batch work with an exact dry-run scope gate and reviewable JSON, CSV, and manifest artifacts.
 
+## How the plugin works
+
+<section class="plugin-flow" aria-label="HCP Intelligence input, tools, and expected output">
+  <div class="plugin-flow__stage plugin-flow__stage--input">
+    <span class="plugin-flow__label">Input</span>
+    <h3>Account identity and scope</h3>
+    <p>A governed account ID or CSV with name, country, account type, specialty, and institution clues.</p>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--tools">
+    <span class="plugin-flow__label">Tools</span>
+    <h3>Account and public-source research</h3>
+    <ul class="plugin-flow__tools" aria-label="HCP Intelligence tools">
+      <li><code>list_accounts</code></li><li><code>get_account</code></li><li><code>update_account</code></li>
+      <li><code>search_publications</code></li><li><code>search_guidelines</code></li><li><code>search_clinical_trials</code></li>
+      <li><code>search_grants</code></li><li><code>search_orcid</code></li><li><code>search_congresses</code></li>
+      <li><code>search_hcp_web</code></li><li><code>search_hco_web</code></li>
+    </ul>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--output">
+    <span class="plugin-flow__label">Expected output</span>
+    <h3>Cited profile and batch record</h3>
+    <p>Evidence-backed profile JSON; batch work also writes a summary CSV and manifest with completion status.</p>
+  </div>
+</section>
+
 ## A three-step workflow
 
 <div class="capability-workflow">

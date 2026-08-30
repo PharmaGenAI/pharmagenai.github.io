@@ -32,6 +32,33 @@ and a human-readable package that qualified medical, legal, and regulatory revie
 - Requires claim IDs for promotional copy blocks except exact legal text and the brief's exact call to action.
 - Invalidates prior validation when the brief, claims, or copy changes, then packages current artifacts for review.
 
+## How the plugin works
+
+<section class="plugin-flow" aria-label="Campaign Studio input, tools, and expected output">
+  <div class="plugin-flow__stage plugin-flow__stage--input">
+    <span class="plugin-flow__label">Input</span>
+    <h3>Governed campaign components</h3>
+    <p>A campaign brief, approved-claims JSON, brand kit, jurisdiction, audience, CTA, and requested channels.</p>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--tools">
+    <span class="plugin-flow__label">Tools</span>
+    <h3>Draft, validate, render, and package</h3>
+    <ul class="plugin-flow__tools" aria-label="Campaign Studio tools">
+      <li><code>create_campaign_brief</code></li><li><code>retrieve_approved_claims</code></li><li><code>retrieve_brand_components</code></li>
+      <li><code>generate_audience_journey</code></li><li><code>generate_message_architecture</code></li><li><code>generate_channel_copy</code></li>
+      <li><code>validate_claims_and_fair_balance</code></li><li><code>render_email</code></li><li><code>render_banner</code></li>
+      <li><code>render_poster</code></li><li><code>package_mlr_submission</code></li>
+    </ul>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--output">
+    <span class="plugin-flow__label">Expected output</span>
+    <h3>Draft MLR review package</h3>
+    <p>Validated copy, rendered email HTML, SVG banner or PDF poster, and a human-readable review summary.</p>
+  </div>
+</section>
+
 ## A three-step workflow
 
 <div class="capability-workflow">

@@ -32,6 +32,30 @@ capacity, channel mix, unassigned records, and no-action reasons for accountable
 - Scores eligible records with explicit weights and coverage constraints, then selects a consent-compatible channel.
 - Fingerprints the loaded universe and fails closed if a later reload makes an earlier plan stale before export.
 
+## How the plugin works
+
+<section class="plugin-flow" aria-label="Next-Best-Engagement input, tools, and expected output">
+  <div class="plugin-flow__stage plugin-flow__stage--input">
+    <span class="plugin-flow__label">Input</span>
+    <h3>Assigned HCP universe</h3>
+    <p>A CSV with HCP, territory, and representative IDs; consent, tier, activity, and capacity fields refine eligibility.</p>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--tools">
+    <span class="plugin-flow__label">Tools</span>
+    <h3>Load, recommend, and export</h3>
+    <ul class="plugin-flow__tools" aria-label="Next-Best-Engagement tools">
+      <li><code>load_universe</code></li><li><code>recommend_engagements</code></li><li><code>render_plan</code></li>
+    </ul>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--output">
+    <span class="plugin-flow__label">Expected output</span>
+    <h3>Consent-aware engagement plan</h3>
+    <p>Plan JSON or engagement and summary CSVs with actions, assigned owners, metrics, and no-action reasons.</p>
+  </div>
+</section>
+
 ## A three-step workflow
 
 <div class="capability-workflow">

@@ -40,6 +40,7 @@ CAPABILITY_SECTIONS = (
     "## The problem",
     "## Objective",
     "## How it helps",
+    "## How the plugin works",
     "## A three-step workflow",
     "## Sample input",
     "## Interpreted sample output",
@@ -729,6 +730,13 @@ def main() -> int:
                 fail(errors, f"{page_path.relative_to(ROOT)}: missing required section {section!r}")
         if page_text.count('class="workflow-step"') != 3:
             fail(errors, f"{page_path.relative_to(ROOT)}: expected exactly three workflow steps")
+        if page_text.count('class="plugin-flow"') != 1:
+            fail(errors, f"{page_path.relative_to(ROOT)}: expected exactly one plugin input-tools-output visual")
+        for stage in ("Input", "Tools", "Expected output"):
+            if f">{stage}<" not in page_text:
+                fail(errors, f"{page_path.relative_to(ROOT)}: missing plugin-flow stage {stage!r}")
+        if 'class="plugin-flow__tools"' not in page_text:
+            fail(errors, f"{page_path.relative_to(ROOT)}: missing visual tool list")
         for marker in ("Fictional", "representative", "qualified", "public beta"):
             if marker.lower() not in page_text.lower():
                 fail(errors, f"{page_path.relative_to(ROOT)}: missing boundary marker {marker!r}")
@@ -816,7 +824,7 @@ def main() -> int:
     combined = "\n".join(pages.values())
 
     homepage = pages["docs/index.md"]
-    for marker in ("data-hero", "evidence-ribbon", "01", "02", "03", "04", "05", "06"):
+    for marker in ("data-hero", "capability-table", "01", "02", "03", "04", "05", "06"):
         if marker not in homepage:
             fail(errors, f"docs/index.md: missing lifecycle marker {marker!r}")
     for error in capability_version_errors(config, homepage, release):

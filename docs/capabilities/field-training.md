@@ -32,6 +32,31 @@ or post-session scorecard while retaining source-set isolation and exact page or
 - Grounds messages, model answers, and approved responses through structured `SourceReference` records.
 - Validates and saves structured JSON plus self-contained interactive HTML for offline review and facilitation.
 
+## How the plugin works
+
+<section class="plugin-flow" aria-label="Field Training input, tools, and expected output">
+  <div class="plugin-flow__stage plugin-flow__stage--input">
+    <span class="plugin-flow__label">Input</span>
+    <h3>Exact approved source set</h3>
+    <p>Absolute PDF or PPTX paths plus a requested output type and name; every supplied file must validate.</p>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--tools">
+    <span class="plugin-flow__label">Tools</span>
+    <h3>Ingest, ground, and render</h3>
+    <ul class="plugin-flow__tools" aria-label="Field Training tools">
+      <li><code>ingest_document</code></li><li><code>list_documents</code></li><li><code>search_content</code></li>
+      <li><code>get_document_page</code></li><li><code>render_output</code></li>
+    </ul>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--output">
+    <span class="plugin-flow__label">Expected output</span>
+    <h3>Grounded learning artifact</h3>
+    <p>Schema-valid JSON and self-contained HTML for a learning package, assessment, role-play kit, or scorecard.</p>
+  </div>
+</section>
+
 ## A three-step workflow
 
 <div class="capability-workflow">

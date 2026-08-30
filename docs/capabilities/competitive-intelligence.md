@@ -32,6 +32,33 @@ coverage and limitations, and render multiple business views from the same evide
 - Distinguishes `complete`, `partial`, `failed`, `not_configured`, and `not_applicable` source states.
 - Binds report and timeline artifacts to the same `run_records_sha256` so their evidence base can be compared.
 
+## How the plugin works
+
+<section class="plugin-flow" aria-label="Competitive Intelligence input, tools, and expected output">
+  <div class="plugin-flow__stage plugin-flow__stage--input">
+    <span class="plugin-flow__label">Input</span>
+    <h3>Bounded market question</h3>
+    <p>Tracked drug and company identities, aliases, therapeutic scope, source selection, and decision horizon.</p>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--tools">
+    <span class="plugin-flow__label">Tools</span>
+    <h3>Collect once, project many views</h3>
+    <ul class="plugin-flow__tools" aria-label="Competitive Intelligence tools">
+      <li><code>ci_status</code></li><li><code>ci_track</code></li><li><code>ci_refresh</code></li>
+      <li><code>ci_scan_trials</code></li><li><code>ci_trial_detail</code></li><li><code>ci_scan_regulatory</code></li>
+      <li><code>ci_scan_news</code></li><li><code>ci_scan_publications</code></li><li><code>ci_extract_events</code></li>
+      <li><code>ci_landscape</code></li><li><code>ci_report</code></li><li><code>ci_timeline</code></li>
+    </ul>
+  </div>
+  <span class="plugin-flow__arrow" aria-hidden="true">→</span>
+  <div class="plugin-flow__stage plugin-flow__stage--output">
+    <span class="plugin-flow__label">Expected output</span>
+    <h3>Evidence run, briefing, and timeline</h3>
+    <p>Immutable source records plus HTML, JSON, and CSV views bound to the same evidence fingerprint.</p>
+  </div>
+</section>
+
 ## A three-step workflow
 
 <div class="capability-workflow">
