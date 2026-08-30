@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Open Pharma Plugins</title>
+  <rect width="64" height="64" rx="12" fill="#102A43"/>
+  <path d="M19 14h26v8H19zm4 8h18v10l9 16a5 5 0 0 1-4 8H18a5 5 0 0 1-4-8l9-16z" fill="#F4F8FB"/>
+  <path d="M19 45h26l3 6H16z" fill="#0B7A75"/>
+</svg>

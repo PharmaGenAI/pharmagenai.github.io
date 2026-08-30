@@ -1,0 +1,18 @@
+sample_declaration: Fictional and representative input; not operational monitoring data.
+monitoring_question: What changed in the fictional Novera oncology landscape this quarter?
+entities:
+  - entity_type: drug
+    name: Novera-mab (fictional)
+    aliases:
+      - NVX-101
+  - entity_type: company
+    name: Meridian Arc Therapeutics (fictional)
+requested_sources:
+  - clinicaltrials_gov
+  - openfda
+  - dailymed
+  - pubmed
+  - web_search
+report_views:
+  - briefing
+  - timeline

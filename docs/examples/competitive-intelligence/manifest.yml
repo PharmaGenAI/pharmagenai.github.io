@@ -1,0 +1,9 @@
+capability_slug: competitive-intelligence
+capability_version: 1.1.0
+distribution_version: 2.2.1
+source_commit: 6bfc6ce43491d66b4ef45b1d3934a58648e1afc6
+fictional_data: true
+status: validated-representative
+input_path: input.yml
+output_path: output.json
+notes: This fictional representative sample is not current runtime-generated output; it was assembled to illustrate the pinned public-beta contract.

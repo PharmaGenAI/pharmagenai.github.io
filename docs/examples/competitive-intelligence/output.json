@@ -1,0 +1,31 @@
+{
+  "sample_declaration": "Fictional and representative excerpt; not current runtime-generated output.",
+  "run_id": "fictional-ci-run-001",
+  "run_records_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "coverage": [
+    {
+      "entity": "Novera-mab (fictional)",
+      "source": "clinicaltrials_gov",
+      "status": "complete",
+      "record_count": 1,
+      "limitations": ["The record shown is simulated and links only to an example domain."]
+    },
+    {
+      "entity": "Novera-mab (fictional)",
+      "source": "web_search",
+      "status": "not_configured",
+      "record_count": 0,
+      "limitations": ["No web provider was configured; absence of news cannot be inferred."]
+    }
+  ],
+  "briefing_excerpt": {
+    "observation": "A simulated phase-status update appears in the complete trial-source slice.",
+    "implication_for_review": "Confirm the source record and assess timing assumptions before using the observation in planning.",
+    "source_url": "https://clinical-trials.example/study/NVX-101-FICTIONAL"
+  },
+  "timeline": {
+    "included_events": 1,
+    "excluded_old_events": 0,
+    "excluded_undated_events": 0
+  }
+}

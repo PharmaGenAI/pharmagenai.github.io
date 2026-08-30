@@ -1,0 +1,14 @@
+sample_declaration: Fictional and representative request; the named approved-source PDF is simulated.
+requested_output_type: learning_package
+output_name: fictional-product-field-dossier
+approved_sources:
+  - file_path: /approved/fictional-product-messages.pdf
+    document_id: fictional-product-messages-pdf
+    document_name: fictional-product-messages.pdf
+    page_excerpt:
+      page_number: 3
+      excerpt: "FICTIONAL TRAINING SOURCE: Discuss benefit only together with the stated safety context."
+requirements:
+  - Use only the supplied approved source set.
+  - Ground every message to an exact page or slide excerpt.
+  - Include fair balance and mark the package for qualified MLR review.

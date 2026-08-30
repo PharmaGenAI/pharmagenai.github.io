@@ -1,0 +1,42 @@
+{
+  "sample_declaration": "Fictional and representative excerpt; not current runtime-generated output.",
+  "output_type": "learning_package",
+  "content_excerpt": {
+    "title": "Fictional Product Field Dossier",
+    "modules": [
+      {
+        "title": "Balanced message practice",
+        "product": "Fictional Product",
+        "therapeutic_area": "Oncology",
+        "objectives": [
+          {
+            "objective": "Explain why benefit and safety context must remain connected.",
+            "bloom_level": "apply"
+          }
+        ],
+        "key_messages": [
+          {
+            "message": "Discuss benefit only together with the stated safety context.",
+            "category": "fair_balance",
+            "sources": [
+              {
+                "document_id": "fictional-product-messages-pdf",
+                "document_name": "fictional-product-messages.pdf",
+                "page_number": 3,
+                "excerpt": "FICTIONAL TRAINING SOURCE: Discuss benefit only together with the stated safety context."
+              }
+            ]
+          }
+        ],
+        "talking_points": [],
+        "common_objections": []
+      }
+    ],
+    "source_documents": ["fictional-product-messages.pdf"],
+    "generated_at": "2026-08-29T12:00:00Z"
+  },
+  "review_flags": [
+    "Confirm the excerpt exactly matches the ingested approved source.",
+    "Qualified medical, legal, and regulatory review is required before use."
+  ]
+}

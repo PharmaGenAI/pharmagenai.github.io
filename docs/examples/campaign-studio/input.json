@@ -1,0 +1,37 @@
+{
+  "sample_declaration": "Fictional and representative campaign input; not production claims or brand content.",
+  "campaign_brief": {
+    "campaign_name": "Asteron Evidence Conversation (fictional)",
+    "country": "US",
+    "policy_jurisdiction": "FDA",
+    "mode": "promotional",
+    "brand": "ASTERON (fictional)",
+    "indication": "Fictional approved indication",
+    "target_segment": "Oncologists",
+    "behavioral_objective": "Review the fictional approved evidence",
+    "desired_kpi": ["qualified-review-readiness"],
+    "call_to_action": "Review the fictional evidence",
+    "channels": ["email"]
+  },
+  "approved_claims": [
+    {
+      "claim_id": "fictional-c-001",
+      "text": "FICTIONAL CLAIM: In the simulated study, the prespecified endpoint was met.",
+      "category": "efficacy",
+      "source_document": "Asteron Fictional Approved Messages",
+      "source_reference": "Simulated Study, Table 1",
+      "expiry": null,
+      "restrictions": "Demonstration only; never use in operational materials."
+    },
+    {
+      "claim_id": "fictional-c-002",
+      "text": "FICTIONAL SAFETY: Consult the simulated prescribing information for the complete safety profile.",
+      "category": "safety",
+      "source_document": "Asteron Fictional Approved Messages",
+      "source_reference": "Simulated Safety Section",
+      "expiry": null,
+      "restrictions": "Demonstration only; never use in operational materials."
+    }
+  ],
+  "required_safety_content": ["fictional-c-002"]
+}

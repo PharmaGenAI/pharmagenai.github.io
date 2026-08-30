@@ -1,0 +1,9 @@
+capability_slug: next-best-engagement
+capability_version: 1.0.2
+distribution_version: 2.2.1
+source_commit: 6bfc6ce43491d66b4ef45b1d3934a58648e1afc6
+fictional_data: true
+status: generated-from-pinned-fixture
+input_path: input.csv
+output_path: output.json
+notes: This sample uses the exact pinned built-in fictional demo fixture, and output.json was runtime-generated from it on 2026-08-30 with the pinned Next-Best-Engagement 1.0.2 implementation.

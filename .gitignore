@@ -1,0 +1,5 @@
+.cache/
+.superpowers/
+.venv/
+site/
+__pycache__/

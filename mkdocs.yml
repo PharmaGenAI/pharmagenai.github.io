@@ -1,0 +1,91 @@
+site_name: Open Pharma Plugins
+site_description: Business-first guidance and fictional examples for evidence-backed pharmaceutical commercial workflows.
+site_author: PharmaGenAI
+site_url: https://pharmagenai.github.io/
+repo_name: Website source
+repo_url: https://github.com/PharmaGenAI/pharmagenai.github.io
+edit_uri: ""
+copyright: Open Pharma Plugins is an Apache-2.0 public beta. Validate outputs before operational use.
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  favicon: assets/images/favicon.svg
+  icon:
+    logo: material/flask-outline
+  font: false
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking
+    - content.code.copy
+  palette:
+    scheme: open-pharma
+    primary: custom
+    accent: custom
+
+nav:
+  - Home: index.md
+  - Get started: get-started.md
+  - Business outcomes: outcomes/index.md
+  - Capabilities:
+      - HCP Intelligence: capabilities/hcp-intelligence.md
+      - Competitive Intelligence: capabilities/competitive-intelligence.md
+      - Territory Alignment: capabilities/territory-alignment.md
+      - Next-Best-Engagement: capabilities/next-best-engagement.md
+      - Field Training: capabilities/field-training.md
+      - Campaign Studio: capabilities/campaign-studio.md
+  - Examples: examples/index.md
+  - Trust & governance: trust-governance.md
+  - Technical reference: technical-reference.md
+  - Operations:
+      - Release sync: operations/release-sync.md
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/extra.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+      title: On this page
+
+extra:
+  release:
+    distribution: "2.2.1"
+    source_commit: "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6"
+    repository: PharmaGenAI/open-pharma-plugins
+  capability_versions:
+    hcp_intelligence: "1.0.2"
+    field_training: "1.1.1"
+    campaign_studio: "1.0.1"
+    next_best_engagement: "1.0.2"
+    territory_alignment: "1.0.1"
+    competitive_intelligence: "1.1.0"
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/PharmaGenAI/pharmagenai.github.io
+      name: Website source on GitHub
+  utility_links:
+    - label: Get started
+      href: /get-started/
+    - label: Trust & governance
+      href: /trust-governance/
+    - label: Technical reference
+      href: /technical-reference/
+    - label: Release snapshot
+      href: /assets/data/release.json
+    - label: Public PyPI project
+      href: https://pypi.org/project/open-pharma-plugins/2.2.1/
+
+strict: true
+use_directory_urls: true

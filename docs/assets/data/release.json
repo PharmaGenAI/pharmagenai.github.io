@@ -1,0 +1,13 @@
+{
+  "canonical_repository": "PharmaGenAI/open-pharma-plugins",
+  "source_commit": "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6",
+  "distribution_version": "2.2.1",
+  "capabilities": {
+    "HCP Intelligence": "1.0.2",
+    "Field Training": "1.1.1",
+    "Campaign Studio": "1.0.1",
+    "Next-Best-Engagement": "1.0.2",
+    "Territory Alignment": "1.0.1",
+    "Competitive Intelligence": "1.1.0"
+  }
+}
