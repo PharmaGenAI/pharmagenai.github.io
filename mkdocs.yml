@@ -65,15 +65,15 @@ markdown_extensions:
 
 extra:
   release:
-    distribution: "2.2.1"
-    source_commit: "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6"
+    distribution: "2.4.0"
+    source_commit: "d9bca693455c3c0d055d39e01806e9ad0a292400"
     repository: PharmaGenAI/open-pharma-plugins
   capability_versions:
     hcp_intelligence: "1.0.2"
     field_training: "1.1.1"
-    campaign_studio: "1.0.1"
+    campaign_studio: "1.1.0"
     next_best_engagement: "1.0.2"
-    territory_alignment: "1.0.1"
+    territory_alignment: "1.2.0"
     competitive_intelligence: "1.1.0"
   social:
     - icon: fontawesome/brands/github
@@ -89,7 +89,7 @@ extra:
     - label: Release snapshot
       href: /assets/data/release.json
     - label: Public PyPI project
-      href: https://pypi.org/project/open-pharma-plugins/2.2.1/
+      href: https://pypi.org/project/open-pharma-plugins/2.4.0/
 
 strict: true
 use_directory_urls: true

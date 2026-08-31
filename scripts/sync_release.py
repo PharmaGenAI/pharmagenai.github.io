@@ -227,12 +227,6 @@ def sync_site_release(root: Path, release: dict) -> list[str]:
         f"https://github.com/{release['canonical_repository']}/tree/{source_commit}",
         index_text,
     )
-    index_text = replace_required(
-        index_text,
-        r"records the full pinned source commit `[0-9a-f]{7,40}`; the visible short SHA `[0-9a-f]{7,40}`",
-        f"records the full pinned source commit `{source_commit}`; the visible short SHA `{short_commit}`",
-        "homepage source commit explanation",
-    )
     if index_path.read_text(encoding="utf-8") != index_text:
         index_path.write_text(index_text, encoding="utf-8")
         changed.append(index_path.relative_to(root).as_posix())
@@ -278,6 +272,11 @@ def sync_site_release(root: Path, release: dict) -> list[str]:
         text = re.sub(
             r"https://pypi\.org/project/open-pharma-plugins/\d+\.\d+\.\d+/",
             f"https://pypi.org/project/open-pharma-plugins/{distribution}/",
+            text,
+        )
+        text = re.sub(
+            r"open-pharma-plugins \d+\.\d+\.\d+\]\(https://pypi\.org/project/open-pharma-plugins/",
+            f"open-pharma-plugins {distribution}](https://pypi.org/project/open-pharma-plugins/",
             text,
         )
         text = re.sub(

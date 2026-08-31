@@ -28,7 +28,7 @@ hide:
   <div class="quick-install__options">
     <article class="quick-install__option">
       <p>Option 1 · Agent harness</p>
-      <h3>Claude Code or Codex</h3>
+      <h3>Claude Code, Codex, or GitHub Copilot CLI</h3>
       <span>Run the repository installer to add the Skill and MCP tools through the harness.</span>
       <pre><code>git clone https://github.com/PharmaGenAI/open-pharma-plugins.git
 cd open-pharma-plugins
@@ -40,7 +40,7 @@ bash install.sh</code></pre>
       <h3>Published package</h3>
       <span>Install a released capability from the published Python distribution.</span>
       <pre><code>python -m pip install \
-  "open-pharma-plugins[hcp-intelligence]==2.2.1"</code></pre>
+  "open-pharma-plugins[hcp-intelligence]==2.4.0"</code></pre>
     </article>
   </div>
 </section>
@@ -113,10 +113,10 @@ bash install.sh</code></pre>
     <tbody>
       <tr><td data-label="Capability"><a href="capabilities/hcp-intelligence/"><span class="capability-table__index">01</span><strong>HCP Intelligence</strong></a></td><td data-label="Business question">How do we prepare for an account conversation?</td><td data-label="Expected output">Cited public-source profile</td><td data-label="Version"><span class="version-tag">HCP 1.0.2</span></td></tr>
       <tr><td data-label="Capability"><a href="capabilities/competitive-intelligence/"><span class="capability-table__index">02</span><strong>Competitive Intelligence</strong></a></td><td data-label="Business question">What changed in the market?</td><td data-label="Expected output">Evidence brief and timeline</td><td data-label="Version"><span class="version-tag">CI 1.1.0</span></td></tr>
-      <tr><td data-label="Capability"><a href="capabilities/territory-alignment/"><span class="capability-table__index">03</span><strong>Territory Alignment</strong></a></td><td data-label="Business question">Which coverage scenario works best?</td><td data-label="Expected output">Assignment and route scenario</td><td data-label="Version"><span class="version-tag">TA 1.0.1</span></td></tr>
+      <tr><td data-label="Capability"><a href="capabilities/territory-alignment/"><span class="capability-table__index">03</span><strong>Territory Alignment</strong></a></td><td data-label="Business question">Which coverage scenario works best?</td><td data-label="Expected output">Assignment and route scenario</td><td data-label="Version"><span class="version-tag">TA 1.2.0</span></td></tr>
       <tr><td data-label="Capability"><a href="capabilities/next-best-engagement/"><span class="capability-table__index">04</span><strong>Next-Best-Engagement</strong></a></td><td data-label="Business question">What should the team consider next?</td><td data-label="Expected output">Consent-aware engagement plan</td><td data-label="Version"><span class="version-tag">NBE 1.0.2</span></td></tr>
       <tr><td data-label="Capability"><a href="capabilities/field-training/"><span class="capability-table__index">05</span><strong>Field Training</strong></a></td><td data-label="Business question">How do we build learning from approved sources?</td><td data-label="Expected output">Learning and role-play draft</td><td data-label="Version"><span class="version-tag">FT 1.1.1</span></td></tr>
-      <tr><td data-label="Capability"><a href="capabilities/campaign-studio/"><span class="capability-table__index">06</span><strong>Campaign Studio</strong></a></td><td data-label="Business question">How do we prepare material for review?</td><td data-label="Expected output">Campaign review package</td><td data-label="Version"><span class="version-tag">CS 1.0.1</span></td></tr>
+      <tr><td data-label="Capability"><a href="capabilities/campaign-studio/"><span class="capability-table__index">06</span><strong>Campaign Studio</strong></a></td><td data-label="Business question">How do we prepare material for review?</td><td data-label="Expected output">Campaign review package</td><td data-label="Version"><span class="version-tag">CS 1.1.0</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -157,11 +157,3 @@ bash install.sh</code></pre>
   <h2 id="beta-boundary">Human review is part of every workflow</h2>
   <p>Validate identity, source coverage, assumptions, data permissions, and rendered artifacts before operational use. Campaign and field-training materials are drafts for qualified medical, legal, and regulatory review—not evidence of approval. Recommendations do not replace accountable business, medical, legal, privacy, or regulatory judgement.</p>
 </aside>
-
-## Technical truth stays with the release
-
-This site explains business use and provides fictional examples. Package versions, installation commands,
-release notes, schemas, and technical behavior remain canonical in the repository path linked from the
-[technical reference page](technical-reference.md). The machine-readable [release snapshot](assets/data/release.json)
-records the full pinned source commit `6bfc6ce43491d66b4ef45b1d3934a58648e1afc6`; the visible short SHA `6bfc6ce`
-is derived from that full commit for display only.

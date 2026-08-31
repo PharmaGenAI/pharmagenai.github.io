@@ -7,11 +7,11 @@ description: Compare HCP-to-representative assignment scenarios with workload, t
   <div>
     <p class="dossier-kicker">Capability 03 · Shape coverage</p>
     <h1 id="capability-title">Territory Alignment</h1>
-    <p class="capability-header__summary">Model assignment choices and visit clusters while keeping changes, unassigned accounts, and operating trade-offs in view.</p>
+    <p class="capability-header__summary">Model assignment choices and visit clusters, then review changes, trade-offs, and provenance in a consolidated offline report.</p>
   </div>
   <aside class="capability-header__proof" aria-label="Release evidence">
-    <strong>Capability 1.0.1</strong><br>
-    Distribution 2.2.1 · source 6bfc6ce<br>
+    <strong>Capability 1.2.0</strong><br>
+    Distribution 2.4.0 · source d9bca69<br>
     Fictional sample · public beta
   </aside>
 </section>
@@ -23,14 +23,14 @@ employment rules at once. A single assignment list hides the alternatives and th
 
 ## Objective
 
-Create named scenarios that make HCP-to-representative assignments, objective scores, raw metrics, unassigned records,
-and manager overrides inspectable before a field operating decision is made.
+Create immutable named scenarios that make HCP-to-representative assignments, objective scores, raw metrics,
+unassigned records, manager overrides, and the exact saved input snapshot inspectable before a field decision is made.
 
 ## How it helps
 
-- Loads governed HCP, representative, current-alignment, and constraint data as separate inputs.
-- Models vacancies, new hires, pinned overrides, objective weights, and product/account constraints.
-- Compares two to four scenarios and can produce map or visit-cluster artifacts for operational review.
+- Loads governed HCP, representative, current-alignment, and constraint data as separate inputs and fingerprints the saved universe.
+- Models vacancies, new hires, pinned overrides, objective weights, and product/account constraints without overwriting scenario names.
+- Produces a self-contained offline report with KPIs, relative territory view, charts, review queue, changed assignments, provenance, and advanced exports.
 
 ## How the plugin works
 
@@ -43,7 +43,7 @@ and manager overrides inspectable before a field operating decision is made.
   <span class="plugin-flow__arrow" aria-hidden="true">→</span>
   <div class="plugin-flow__stage plugin-flow__stage--tools">
     <span class="plugin-flow__label">Tools</span>
-    <h3>Model, compare, and map</h3>
+    <h3>Model, compare, report, and route</h3>
     <ul class="plugin-flow__tools" aria-label="Territory Alignment tools">
       <li><code>ta_status</code></li><li><code>ta_align</code></li><li><code>ta_evaluate</code></li>
       <li><code>ta_compare</code></li><li><code>ta_visualize</code></li><li><code>ta_cluster</code></li>
@@ -52,8 +52,8 @@ and manager overrides inspectable before a field operating decision is made.
   <span class="plugin-flow__arrow" aria-hidden="true">→</span>
   <div class="plugin-flow__stage plugin-flow__stage--output">
     <span class="plugin-flow__label">Expected output</span>
-    <h3>Comparable operating scenarios</h3>
-    <p>Scenario JSON and CSVs, comparison metrics, an interactive map, and representative visit routes.</p>
+    <h3>Decision-ready scenario reports</h3>
+    <p>A consolidated offline HTML report, scenario JSON and formula-safe CSVs, comparison metrics, review queue, and representative visit routes.</p>
   </div>
 </section>
 
@@ -61,8 +61,8 @@ and manager overrides inspectable before a field operating decision is made.
 
 <div class="capability-workflow">
   <section class="workflow-step"><span>01 / GOVERN</span><h3>Prepare the operating inputs</h3><p>Confirm account ownership, field roster, coordinates, product expertise, consent, and constraints.</p></section>
-  <section class="workflow-step"><span>02 / MODEL</span><h3>Generate named scenarios</h3><p>Apply vacancies, hires, overrides, and objective weights without overwriting the baseline choice.</p></section>
-  <section class="workflow-step"><span>03 / DECIDE</span><h3>Compare trade-offs</h3><p>Review movements, workload, travel, priority coverage, unassigned HCPs, and route feasibility.</p></section>
+  <section class="workflow-step"><span>02 / MODEL</span><h3>Save immutable scenarios</h3><p>Apply vacancies, hires, overrides, and objective weights while preserving the exact input snapshot and baseline.</p></section>
+  <section class="workflow-step"><span>03 / DECIDE</span><h3>Review the offline report</h3><p>Compare movements, workload, travel, priority coverage, review exceptions, unassigned HCPs, and route feasibility.</p></section>
 </div>
 
 ## Sample input
@@ -98,19 +98,21 @@ challenge that trade-off rather than treating the composite score as the answer.
 | Workload balance and territory summaries | Where demand or potential is concentrated by representative |
 | Average and maximum travel estimate | Where geography may make a scenario impractical |
 | Unassigned HCPs and reasons | Which governed records need an explicit manager decision |
+| Input fingerprints and review queue | Whether compared scenarios use the same governed universe and which exceptions need action |
 
 </div>
 
 ## Boundaries and human review
 
 Results are planning recommendations, not an automatic reorganisation. Confirm employment rules, accessibility,
-consent, account ownership, travel constraints, product expertise, vacancies, and manager overrides. Opening an online
-map can send coordinates to public tile providers; use an approved offline stack where required. Qualified operations
-and field leaders must review every public-beta scenario before operational use.
+consent, account ownership, travel constraints, product expertise, vacancies, and manager overrides. The default
+consolidated report is self-contained and makes no network requests. A separately requested public basemap loads
+CARTO/OpenStreetMap resources and may disclose map extent or coordinates to those providers. Qualified operations and
+field leaders must review every public-beta scenario before operational use.
 
 ## Get started
 
 Inspect how the fictional scenario exposes continuity and concentration, then use the canonical pinned guide to learn
-the separate CSV contracts and scenario tools.
+the separate CSV contracts, immutable scenario snapshots, consolidated reports, and route-planning tools.
 
-[Open the pinned Territory Alignment guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/6bfc6ce43491d66b4ef45b1d3934a58648e1afc6/cookbooks/territory-alignment/usage.md){ .opp-button .opp-button--primary }
+[Open the pinned Territory Alignment guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/territory-alignment/usage.md){ .opp-button .opp-button--primary }

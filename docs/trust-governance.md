@@ -70,10 +70,10 @@ release has regenerated every sample artifact or that every operational edge cas
 | --- | --- |
 | HCP Intelligence | Public-source evidence can still include personal data; confirm identity, minimisation, and whether optional synthesis is permitted |
 | Competitive Intelligence | Source status can be complete, partial, failed, or not configured; lack of evidence is not proof that an event did not occur |
-| Territory Alignment | Opening the optional HTML map can send tile requests to public providers; use an approved offline map stack when coordinates must stay private |
+| Territory Alignment | The default consolidated report stays offline; explicitly selecting the public basemap can send map extent or coordinates to CARTO/OpenStreetMap providers |
 | Next-Best-Engagement | Plans depend on governed consent, recency, capacity, and assignment inputs; recommendations do not authorize outreach |
 | Field Training | Generated claims and model answers must stay tied to the supplied approved source set; output is still a draft for qualified MLR review |
-| Campaign Studio | Validation and rendering gates support packaging, but every artifact still needs qualified MLR review before distribution or field use |
+| Campaign Studio | Input, channel, and rendered-file gates plus package hashes support review, but they do not approve content or authorize sending, publishing, or distribution |
 
 <aside class="evidence-note evidence-note--boundary" aria-labelledby="governance-boundary">
   <h2 id="governance-boundary">Review boundaries differ by capability, but they never disappear</h2>
