@@ -65,8 +65,8 @@ markdown_extensions:
 
 extra:
   release:
-    distribution: "2.4.0"
-    source_commit: "d9bca693455c3c0d055d39e01806e9ad0a292400"
+    distribution: "2.4.1"
+    source_commit: "bf1518dee6a56f8410feb3058672bfbb479d0bc8"
     repository: PharmaGenAI/open-pharma-plugins
   capability_versions:
     hcp_intelligence: "1.0.2"
@@ -89,7 +89,7 @@ extra:
     - label: Release snapshot
       href: /assets/data/release.json
     - label: Public PyPI project
-      href: https://pypi.org/project/open-pharma-plugins/2.4.0/
+      href: https://pypi.org/project/open-pharma-plugins/2.4.1/
 
 strict: true
 use_directory_urls: true

@@ -11,7 +11,7 @@ description: Compare HCP-to-representative assignment scenarios with workload, t
   </div>
   <aside class="capability-header__proof" aria-label="Release evidence">
     <strong>Capability 1.2.0</strong><br>
-    Distribution 2.4.0 · source d9bca69<br>
+    Distribution 2.4.1 · source bf1518d<br>
     Fictional sample · public beta
   </aside>
 </section>
@@ -115,4 +115,4 @@ field leaders must review every public-beta scenario before operational use.
 Inspect how the fictional scenario exposes continuity and concentration, then use the canonical pinned guide to learn
 the separate CSV contracts, immutable scenario snapshots, consolidated reports, and route-planning tools.
 
-[Open the pinned Territory Alignment guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/territory-alignment/usage.md){ .opp-button .opp-button--primary }
+[Open the pinned Territory Alignment guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/territory-alignment/usage.md){ .opp-button .opp-button--primary }

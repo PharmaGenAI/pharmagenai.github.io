@@ -11,7 +11,7 @@ description: Collect bounded public-source market evidence once and project repr
   </div>
   <aside class="capability-header__proof" aria-label="Release evidence">
     <strong>Capability 1.1.0</strong><br>
-    Distribution 2.4.0 · source d9bca69<br>
+    Distribution 2.4.1 · source bf1518d<br>
     Fictional sample · public beta
   </aside>
 </section>
@@ -115,4 +115,4 @@ market event did or did not occur outside the collected coverage.
 Use the fictional run to practise interpreting coverage before findings, then consult the canonical pinned guide for
 provider setup and immutable artifact behavior.
 
-[Open the pinned Competitive Intelligence guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/competitive-intelligence/usage.md){ .opp-button .opp-button--primary }
+[Open the pinned Competitive Intelligence guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/competitive-intelligence/usage.md){ .opp-button .opp-button--primary }

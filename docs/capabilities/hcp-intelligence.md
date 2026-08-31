@@ -11,7 +11,7 @@ description: Build reviewable HCP and HCO profiles from public-source evidence, 
   </div>
   <aside class="capability-header__proof" aria-label="Release evidence">
     <strong>Capability 1.0.2</strong><br>
-    Distribution 2.4.0 · source d9bca69<br>
+    Distribution 2.4.1 · source bf1518d<br>
     Fictional sample · public beta
   </aside>
 </section>
@@ -115,4 +115,4 @@ whether an HCP should be targeted; qualified people remain accountable for that 
 Inspect the small fictional files first, then use the canonical pinned guide for current inputs, provider gates,
 and batch completion rules.
 
-[Open the pinned HCP Intelligence guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/hcp-intelligence/usage.md){ .opp-button .opp-button--primary }
+[Open the pinned HCP Intelligence guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/hcp-intelligence/usage.md){ .opp-button .opp-button--primary }

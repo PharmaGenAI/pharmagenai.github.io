@@ -40,7 +40,7 @@ bash install.sh</code></pre>
       <h3>Published package</h3>
       <span>Install a released capability from the published Python distribution.</span>
       <pre><code>python -m pip install \
-  "open-pharma-plugins[hcp-intelligence]==2.4.0"</code></pre>
+  "open-pharma-plugins[hcp-intelligence]==2.4.1"</code></pre>
     </article>
   </div>
 </section>
