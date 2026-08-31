@@ -11,7 +11,7 @@ description: Produce consent-aware HCP, channel, and assigned-representative eng
   </div>
   <aside class="capability-header__proof" aria-label="Release evidence">
     <strong>Capability 1.0.2</strong><br>
-    Distribution 2.4.0 · source d9bca69<br>
+    Distribution 2.4.1 · source bf1518d<br>
     Fictional sample · public beta
   </aside>
 </section>
@@ -114,4 +114,4 @@ reviewers remain accountable for every public-beta action.
 Use the pinned 80-row fictional demo universe to inspect the consent and no-action logic, then consult the canonical
 pinned guide for the full CSV contract, plan fingerprint, and export behavior.
 
-[Open the pinned Next-Best-Engagement guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/next-best-engagement/usage.md){ .opp-button .opp-button--primary }
+[Open the pinned Next-Best-Engagement guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/next-best-engagement/usage.md){ .opp-button .opp-button--primary }

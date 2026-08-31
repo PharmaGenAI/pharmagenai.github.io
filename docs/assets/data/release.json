@@ -1,7 +1,7 @@
 {
   "canonical_repository": "PharmaGenAI/open-pharma-plugins",
-  "source_commit": "d9bca693455c3c0d055d39e01806e9ad0a292400",
-  "distribution_version": "2.4.0",
+  "source_commit": "bf1518dee6a56f8410feb3058672bfbb479d0bc8",
+  "distribution_version": "2.4.1",
   "capabilities": {
     "HCP Intelligence": "1.0.2",
     "Field Training": "1.1.1",

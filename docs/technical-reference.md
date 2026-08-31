@@ -15,10 +15,10 @@ below for installation, configuration, release policy, and capability behavior f
 <div class="preview-dossier" markdown="1">
   <div class="preview-label">Release truth</div>
   <div markdown="1">
-### Distribution 2.4.0 from source commit d9bca693455c3c0d055d39e01806e9ad0a292400
+### Distribution 2.4.1 from source commit bf1518dee6a56f8410feb3058672bfbb479d0bc8
 
 The machine-readable [release snapshot](assets/data/release.json) records the exact release data shown here. The
-visible short SHA `d9bca69` is derived from the full pinned source commit for display only.
+visible short SHA `bf1518d` is derived from the full pinned source commit for display only.
 
 The release-sync workflow validates the upstream tag, full commit, and hardcoded `plugin-versions.json` before
 opening a review PR for a future update.
@@ -30,8 +30,8 @@ opening a review PR for a future update.
 | Need | Canonical path |
 | --- | --- |
 | Browse the source, installer, and documentation | [Open Pharma Plugins repository](https://github.com/PharmaGenAI/open-pharma-plugins) |
-| Install in Claude Code, Codex, or GitHub Copilot CLI | Clone the repository, inspect the pinned [install.sh](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/install.sh), then run `bash install.sh` |
-| Install the published Python distribution | Public PyPI project for [open-pharma-plugins 2.4.0](https://pypi.org/project/open-pharma-plugins/2.4.0/) |
+| Install in Claude Code, Codex, or GitHub Copilot CLI | Clone the repository, inspect the pinned [install.sh](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/install.sh), then run `bash install.sh` |
+| Install the published Python distribution | Public PyPI project for [open-pharma-plugins 2.4.1](https://pypi.org/project/open-pharma-plugins/2.4.1/) |
 | Review business guidance and fictional examples | This site's [Get started](get-started.md), [Examples](examples/index.md), and capability pages |
 | Inspect the pinned release truth this site duplicates | Machine-readable [release snapshot](assets/data/release.json) |
 
@@ -39,26 +39,26 @@ opening a review PR for a future update.
 
 | Need | Pinned canonical document |
 | --- | --- |
-| Repository overview | [README](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/README.md) |
-| Installation surfaces and exact commands | [docs/en/installation.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/docs/en/installation.md) |
-| Configuration variables and defaults | [docs/en/configuration.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/docs/en/configuration.md) |
-| Data security and compliance boundaries | [docs/en/data_security.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/docs/en/data_security.md) |
-| Local development | [docs/en/local_development.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/docs/en/local_development.md) |
-| Testing and offline verification | [docs/en/testing.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/docs/en/testing.md) |
-| Release process and invariants | [docs/en/releasing.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/docs/en/releasing.md) |
-| Guided installer source | [install.sh](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/install.sh) |
-| Capability release index | [plugin-versions.json](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/plugin-versions.json) |
+| Repository overview | [README](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/README.md) |
+| Installation surfaces and exact commands | [docs/en/installation.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/docs/en/installation.md) |
+| Configuration variables and defaults | [docs/en/configuration.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/docs/en/configuration.md) |
+| Data security and compliance boundaries | [docs/en/data_security.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/docs/en/data_security.md) |
+| Local development | [docs/en/local_development.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/docs/en/local_development.md) |
+| Testing and offline verification | [docs/en/testing.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/docs/en/testing.md) |
+| Release process and invariants | [docs/en/releasing.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/docs/en/releasing.md) |
+| Guided installer source | [install.sh](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/install.sh) |
+| Capability release index | [plugin-versions.json](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/plugin-versions.json) |
 
 ## Pinned capability cookbooks
 
 | Capability | Pinned cookbook |
 | --- | --- |
-| HCP Intelligence | [cookbooks/hcp-intelligence/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/hcp-intelligence/usage.md) |
-| Competitive Intelligence | [cookbooks/competitive-intelligence/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/competitive-intelligence/usage.md) |
-| Territory Alignment | [cookbooks/territory-alignment/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/territory-alignment/usage.md) |
-| Next-Best-Engagement | [cookbooks/next-best-engagement/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/next-best-engagement/usage.md) |
-| Field Training | [cookbooks/field-training/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/field-training/usage.md) |
-| Campaign Studio | [cookbooks/campaign-studio/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/campaign-studio/usage.md) |
+| HCP Intelligence | [cookbooks/hcp-intelligence/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/hcp-intelligence/usage.md) |
+| Competitive Intelligence | [cookbooks/competitive-intelligence/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/competitive-intelligence/usage.md) |
+| Territory Alignment | [cookbooks/territory-alignment/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/territory-alignment/usage.md) |
+| Next-Best-Engagement | [cookbooks/next-best-engagement/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/next-best-engagement/usage.md) |
+| Field Training | [cookbooks/field-training/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/field-training/usage.md) |
+| Campaign Studio | [cookbooks/campaign-studio/usage.md](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/campaign-studio/usage.md) |
 
 ## Website-specific automation
 

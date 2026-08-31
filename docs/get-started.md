@@ -91,7 +91,7 @@ Use this option when you want the published Python distribution or need to manag
 environment. This example installs HCP Intelligence.
 
 ```bash
-python -m pip install "open-pharma-plugins[hcp-intelligence]==2.4.0"
+python -m pip install "open-pharma-plugins[hcp-intelligence]==2.4.1"
 ```
 
 Confirm the installed entry point:

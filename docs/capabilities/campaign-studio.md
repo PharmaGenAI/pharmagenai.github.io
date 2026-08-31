@@ -11,7 +11,7 @@ description: Create claim-linked campaign drafts, validation evidence, rendered 
   </div>
   <aside class="capability-header__proof" aria-label="Release evidence">
     <strong>Capability 1.1.0</strong><br>
-    Distribution 2.4.0 · source d9bca69<br>
+    Distribution 2.4.1 · source bf1518d<br>
     Fictional sample · public beta
   </aside>
 </section>
@@ -119,4 +119,4 @@ email, traffic ads, publish assets, or record an authoritative external decision
 Inspect the fictional claim-to-copy mapping, then use the canonical pinned guide for exact input preflight, status-led
 resume, renderer validation, and the content-addressed review export.
 
-[Open the pinned Campaign Studio guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/d9bca693455c3c0d055d39e01806e9ad0a292400/cookbooks/campaign-studio/usage.md){ .opp-button .opp-button--primary }
+[Open the pinned Campaign Studio guide →](https://github.com/PharmaGenAI/open-pharma-plugins/blob/bf1518dee6a56f8410feb3058672bfbb479d0bc8/cookbooks/campaign-studio/usage.md){ .opp-button .opp-button--primary }
