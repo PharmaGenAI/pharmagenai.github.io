@@ -240,7 +240,7 @@ class AutomationContractsTest(unittest.TestCase):
         )
         snapshot = build_release_snapshot(
             release_index["canonical_repository"],
-            "6bfc6ce43491d66b4ef45b1d3934a58648e1afc6",
+            release_index["source_commit"],
             {
                 "distribution_version": release_index["distribution_version"],
                 "plugins": {
@@ -273,6 +273,10 @@ class AutomationContractsTest(unittest.TestCase):
         technical = (root / "docs/technical-reference.md").read_text(encoding="utf-8")
         self.assertEqual(technical_reference_errors(technical, future_release), [])
         self.assertIn(expected_public_pypi_url(future_release), technical)
+        self.assertIn(
+            f'open-pharma-plugins {future_release["distribution_version"]}',
+            technical,
+        )
 
         config = (root / "mkdocs.yml").read_text(encoding="utf-8")
         self.assertIn(expected_public_pypi_url(future_release), config)
@@ -320,7 +324,8 @@ class AutomationContractsTest(unittest.TestCase):
         self.assertNotIn("Public beta", homepage)
         self.assertNotIn("Pinned source", homepage)
         self.assertIn("bash install.sh", homepage)
-        self.assertIn("Claude Code or Codex", homepage)
+        self.assertIn("Claude Code, Codex, or GitHub Copilot CLI", homepage)
+        self.assertNotIn("Technical truth stays with the release", homepage)
         self.assertIn(
             'open-pharma-plugins[hcp-intelligence]==2.3.0',
             homepage,

@@ -62,14 +62,14 @@ experience, or use the published Python distribution for a Python-managed MCP se
   <section class="install-option" markdown="1">
   <div class="install-option__label">Option 1 · Agent harness</div>
 
-### Install in Claude Code or Codex
+### Install in Claude Code, Codex, or GitHub Copilot CLI
 
-Use this option when the plugin should run inside Claude Code or Codex. The repository installer adds the Skill
-and MCP tools through the harness's native plugin system.
+Use this option when the plugin should run inside Claude Code, Codex, or GitHub Copilot CLI. The repository
+installer adds the Skill and MCP tools through the harness's native plugin system.
 
 1. Clone the repository and enter its directory.
 2. Inspect `install.sh` before execution.
-3. Run `bash install.sh`, choose Claude Code or Codex, then select the capability.
+3. Run `bash install.sh`, choose Claude Code, Codex, or GitHub Copilot CLI, then select the capability.
 4. Follow the installer verification step before using governed inputs.
 
 ```bash
@@ -91,7 +91,7 @@ Use this option when you want the published Python distribution or need to manag
 environment. This example installs HCP Intelligence.
 
 ```bash
-python -m pip install "open-pharma-plugins[hcp-intelligence]==2.2.1"
+python -m pip install "open-pharma-plugins[hcp-intelligence]==2.4.0"
 ```
 
 Confirm the installed entry point:

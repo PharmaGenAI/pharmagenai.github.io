@@ -95,6 +95,7 @@ class FoundationContractsTest(unittest.TestCase):
         self.assertNotIn("public beta", self.config["copyright"].lower())
         self.assertNotIn("release-line", self.homepage)
         self.assertNotIn("Pinned source", self.homepage)
+        self.assertNotIn("Technical truth stays with the release", self.homepage)
 
     def test_homepage_installation_is_a_separate_wrapping_section(self) -> None:
         hero_end = self.homepage.index("</section>")
@@ -115,11 +116,11 @@ class FoundationContractsTest(unittest.TestCase):
         for marker in (
             "Option 1 · Agent harness",
             "Option 2 · Python distribution",
-            "Claude Code or Codex",
+            "Claude Code, Codex, or GitHub Copilot CLI",
             "https://github.com/PharmaGenAI/open-pharma-plugins",
             "less install.sh",
             "bash install.sh",
-            'python -m pip install "open-pharma-plugins[hcp-intelligence]==2.2.1"',
+            f'python -m pip install "open-pharma-plugins[hcp-intelligence]=={self.release["distribution_version"]}"',
         ):
             self.assertIn(marker, get_started)
         self.assertIn("published Python distribution", get_started)

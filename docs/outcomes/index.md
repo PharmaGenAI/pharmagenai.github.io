@@ -45,7 +45,7 @@ the risk that separate views silently use different evidence.
 ## Compare territory choices before committing the field
 
 **Use Territory Alignment** to model assignments, vacancies, new hires, overrides, and visit clusters while
-showing trade-offs among workload, travel, relationship continuity, and priority coverage.
+showing workload, travel, continuity, priority coverage, and review exceptions in a consolidated offline report.
 
 - **Bring:** governed HCP, representative, territory, and location data.
 - **Review:** unassigned accounts, manager overrides, employment rules, map-data exposure, and operational feasibility.
@@ -86,8 +86,8 @@ role-play kits, or scorecards. Each generated claim and model answer is expected
   <div markdown="1">
 ## Package campaign drafts for qualified MLR review
 
-**Use Campaign Studio** to structure a brief, audience journey, message architecture, channel copy, validation
-results, rendered assets, and a review package against a supplied approved-claims set and brand kit.
+**Use Campaign Studio** to preflight exact approved-claims and brand-kit inputs, then structure a brief, audience
+journey, message architecture, channel copy, rendered-file validation, and a content-addressed review package.
 
 - **Bring:** jurisdiction, indication, audience, objective, approved claims, brand components, and required safety content.
 - **Review:** claim support, fair balance, jurisdictional elements, asset fidelity, and current-input validation.
